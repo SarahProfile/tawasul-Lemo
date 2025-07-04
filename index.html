@@ -56,12 +56,11 @@
         }
 
         /* Enhanced scroll behavior */
-        header.scrolled {
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
-        }
+         header.scrolled {
+        background: #000000 !important; /* Force solid black */
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+    }
 
         /* Add top padding to body to compensate for fixed header */
         body {
@@ -1796,11 +1795,11 @@
             }
 
             .form-bottom {
-                flex-direction: row;
+                flex-direction: column;
                 gap: 2rem;
-                align-items: flex-start;
+                align-items: center;
                 width: 100%;
-            }
+                     }
 
             .see-prices-btn {
                 width: auto;
