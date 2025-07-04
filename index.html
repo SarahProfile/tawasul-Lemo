@@ -39,15 +39,39 @@
             background-color: white;
         }
         
-        /* Header Styles */
+        /* Fixed Header Styles - More Reliable Than Sticky */
         header {
             background: #000000;
             color: white;
             padding: 1rem 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 9999;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        /* Enhanced scroll behavior */
+        header.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Add top padding to body to compensate for fixed header */
+        body {
+            font-family: 'Sequel Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: white;
+            height: auto;
+            min-height: 100%;
+            padding-top: 80px; /* Adjust based on header height */
         }
         
         .header-content {
@@ -158,7 +182,7 @@
             width: 300px;
             height: 100%;
             background: #000000;
-            z-index: 1000;
+            z-index: 1001;
             transition: right 0.3s ease;
             padding: 2rem 1rem;
             box-shadow: -2px 0 10px rgba(0,0,0,0.3);
@@ -211,6 +235,7 @@
             display: flex;
             align-items: stretch;
             padding: 2rem 0;
+            padding-top: 5rem;
             width: 100%;
         }
         
@@ -1241,7 +1266,7 @@
         }
 
         .faq-item.active .faq-answer {
-            padding: 0 2rem 1.5rem 2rem;
+            padding: 0 2rem 1.5rem 4rem;
             max-height: 200px;
         }
 
@@ -1333,7 +1358,7 @@
             color: #6D6D6D;
             max-width: 100%;
             margin: 0 auto;
-            padding-left: 34px;
+           
         }
           .section  p {
             font-size: 14px;
@@ -1548,7 +1573,7 @@
             }
         }
         
-        /* Mobile Styles - Updated to match version 4 */
+        /* Enhanced Mobile Styles for Sticky Header */
         @media (max-width: 768px) {
             html, body {
                 overflow-x: hidden !important;
@@ -1560,7 +1585,31 @@
                 max-width: 100vw !important;
             }
 
-            /* Mobile Header Styles */
+            /* Mobile Header - Fixed Position */
+            header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 9999 !important;
+                background: #000000;
+                transition: all 0.3s ease;
+                width: 100vw;
+                max-width: 100vw;
+            }
+
+            header.scrolled {
+                background: rgba(0, 0, 0, 0.98) !important;
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
+                box-shadow: 0 2px 25px rgba(0,0,0,0.3);
+            }
+
+            /* Ensure body has proper padding for mobile */
+            body {
+                padding-top: 90px !important; /* Increased mobile spacing */
+            }
+
             .header-content {
                 grid-template-columns: auto 1fr auto;
                 gap: 0.5rem;
@@ -1609,6 +1658,7 @@
                 display: block;
                 width: 250px;
                 max-width: 80vw;
+                z-index: 1001;
             }
             
             /* Mobile Hero Section */
@@ -1949,6 +1999,20 @@
 
         /* Small Mobile Styles */
         @media (max-width: 480px) {
+            /* Small Mobile - Fixed Header */
+            header {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                z-index: 9999 !important;
+            }
+
+            /* Ensure proper body padding */
+            body {
+                padding-top: 80px !important; /* Restored proper spacing for small mobile */
+            }
+
             .header-content {
                 padding: 0 0.5rem;
             }
@@ -2223,7 +2287,7 @@
                             <img src="https://lh3.googleusercontent.com/d/1V_NrqcAmhZD-KH6RCID4Z2rRIU3mgaY9" alt="Choose location">
                         </div>
                         <h3 class="feature-title">Choose location</h3>
-                        <p class="feature-text">Choose your and find<br> your best car</p>
+                        <p class="feature-text">Choose your and find <br> your best car</p>
                     </div>
                     
                     <div class="feature-box">
@@ -2517,6 +2581,23 @@ For example, if you want to call cars for your customers</p>
     </footer>
 
     <script>
+        // Enhanced scroll detection for sticky header
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Add scrolled class for enhanced backdrop effect
+            if (scrollTop > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
         // Mobile menu functionality
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -2625,6 +2706,20 @@ For example, if you want to call cars for your customers</p>
             if (window.innerWidth > 768) {
                 closeMobileMenu();
             }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
     </script>
 </body>
