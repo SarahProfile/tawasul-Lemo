@@ -1409,7 +1409,7 @@
         .footer-right {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            
             padding-left: 400px;
         }
         
@@ -1505,10 +1505,10 @@
         .footer-bottom {
             border-top: 1px solid #333333;
             padding-top: 2rem;
-            display: grid;
+            display: flex;
             grid-template-columns: auto 1fr auto;
             align-items: center;
-            gap: 2rem;
+            justify-content: space-between;
         }
         
         .footer-apps {
@@ -1951,6 +1951,7 @@
             }
             
             .footer-bottom {
+                display: grid;
                 grid-template-columns: 1fr;
                 gap: 1rem;
                 text-align: left;
@@ -2174,7 +2175,7 @@
                 </ul>
             </nav>
             <div class="header-buttons">
-                <button class="header-btn" onclick="showLogin()">Create Account</button>
+                <!-- <button class="header-btn" onclick="showLogin()">Create Account</button> -->
                 <button class="header-btn primary" onclick="showSignup()">Login</button>
                 <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             </div>
@@ -2195,7 +2196,7 @@
                 <li><a href="#contact" onclick="closeMobileMenu()">العربية</a></li>
             </ul>
             <div class="mobile-menu-buttons">
-                <button class="header-btn" onclick="showLogin(); closeMobileMenu();">Create Account</button>
+                <!-- <button class="header-btn" onclick="showLogin(); closeMobileMenu();">Create Account</button> -->
                 <button class="header-btn primary" onclick="showSignup(); closeMobileMenu();">Login</button>
             </div>
         </div>
@@ -2206,7 +2207,7 @@
         <section id="home" class="hero-section">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Elevated Travel Experience</h1>
+                    <h1 class="hero-title">Book. Ride. Arrive in Luxury.</h1>
                     
                     <div class="booking-form">
                         <div class="form-row">
@@ -2261,14 +2262,14 @@
                         </div>
                     </div>
                     
-                    <div class="app-downloads">
+                    <!-- <div class="app-downloads">
                         <a href="#" class="app-button" onclick="downloadApp('android')">
                             <img src="https://lh3.googleusercontent.com/d/1ZLXarbEGoDfytlfQG4lDM1d9opGbU4aa" alt="Download on Google Play">
                         </a>
                         <a href="#" class="app-button" onclick="downloadApp('ios')">
                             <img src="https://lh3.googleusercontent.com/d/1ZY9PztiKcSjfYCi6OgNQJQk0xVe_8Iwr" alt="Download on App Store">
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 
                 <div class="hero-image">
@@ -2326,33 +2327,28 @@
                         <div class="benefit-item">
                             <div class="benefit-icon">
                                 
-                                <img src="https://lh3.googleusercontent.com/d/1iqmNQedVZpjb8ddL7HOG09yIOvasC35B" alt="Tax Savings">
+                                <img src="https://lh3.googleusercontent.com/d/1iqmNQedVZpjb8ddL7HOG09yIOvasC35B" alt="24/7 Availability">
                             </div>
-                            <h3>Tax Savings</h3>
-                            <p>More transparency - less inappropriate spending. Also, 
-if you are a VAT payer, deduct VAT on a monthly basis and 
-reduce the cost of travel.</p>
+                            <h3>24/7 Availability</h3>
+                            <p>Tawasul Limo is available around the clock to serve you anytime, anywhere.</p>
                         </div>
                         
                         <div class="benefit-item">
                             <div class="benefit-icon">
                           
-                                <img src="https://lh3.googleusercontent.com/d/1y9x37VkZyMhjG0gZh6t6N8OMpq5T-AaT" alt="Full control">
+                                <img src="https://lh3.googleusercontent.com/d/1y9x37VkZyMhjG0gZh6t6N8OMpq5T-AaT" alt="Professional Chauffeurs">
                             </div>
-                            <h3>Full control</h3>
-                            <p>Flexible settings for each employee. Choose authorized 
-vehicle classes, addresses, set limits, days of the 
-week when you can travel.</p>
+                            <h3>Professional Chauffeurs</h3>
+                            <p>Our experienced chauffeurs ensure a smooth, respectful, and professional journey every time.</p>
                         </div>
                         
                         <div class="benefit-item">
                             <div class="benefit-icon">
                                 
-                                <img src="https://lh3.googleusercontent.com/d/15DjT52pQNJHOd0KoZOFfQx_odnMK_5_T" alt="Simple Payment">
+                                <img src="https://lh3.googleusercontent.com/d/15DjT52pQNJHOd0KoZOFfQx_odnMK_5_T" alt="Luxurious & Well-Maintained Fleet">
                             </div>
-                            <h3>Simple Payment</h3>
-                            <p>Forget about cash, payment control, accounting, etc.
-All employees can pay for travel directly from their corporate account. Fund your account with a simple bank transfer.</p>
+                            <h3>Luxurious & Well-Maintained Fleet</h3>
+                            <p>Travel in style with our fleet of premium, meticulously maintained vehicles.</p>
                         </div>
                     </div>
 
@@ -2361,33 +2357,27 @@ All employees can pay for travel directly from their corporate account. Fund you
                         <div class="benefit-item">
                             <div class="benefit-icon">
                                 
-                                <img src="https://lh3.googleusercontent.com/d/1eNT2qP65EAjUF31Z0FNgNbYfl73CNI5p" alt="Easy Reports">
+                                <img src="https://lh3.googleusercontent.com/d/1eNT2qP65EAjUF31Z0FNgNbYfl73CNI5p" alt="Transparent Pricing">
                             </div>
-                            <h3>Easy Reports</h3>
-                            <p>No need to collect paper travel reports from all employees.
-Choose the right period and get one convenient electronic
-report with all trips and expenses.</p>
+                            <h3>Transparent Pricing</h3>
+                            <p>Enjoy peace of mind with our clear, upfront pricing and no hidden charges.</p>
                         </div>
                         
                         <div class="benefit-item">
                             <div class="benefit-icon">
-                                <img src="https://lh3.googleusercontent.com/d/1ge5e-cAxh-57ENuhljhi5fEW4z7609Lm" alt="Complete Transparency">
+                                <img src="https://lh3.googleusercontent.com/d/1ge5e-cAxh-57ENuhljhi5fEW4z7609Lm" alt="Personalized Customer Service">
                             </div>
-                            <h3>Complete Transparency</h3>
-                            <p>Track when and where your employees move, request
-comments on trips, view addresses and boarding locations.
-Everything is clear and transparent.</p>
+                            <h3>Personalized Customer Service</h3>
+                            <p>We tailor every ride to your needs with attentive, personalized service.</p>
                         </div>
                         
                         <div class="benefit-item">
                             <div class="benefit-icon">
                                 
-                                <img src="https://lh3.googleusercontent.com/d/19HvVkgU3hD_2TKq-IXOkW6g1PGb1soDc" alt="Easy to Use">
+                                <img src="https://lh3.googleusercontent.com/d/19HvVkgU3hD_2TKq-IXOkW6g1PGb1soDc" alt="Commitment to Safety and Privacy">
                             </div>
-                            <h3>Easy to Use</h3>
-                            <p>Order a car through the app by simply selecting your corporate
-account as payment. Also call a car through the web interface.
-For example, if you want to call cars for your customers</p>
+                            <h3>Commitment to Safety and Privacy</h3>
+                            <p>Your safety and privacy are our top priorities throughout your journey.</p>
                         </div>
                     </div>
                 </div>
@@ -2416,10 +2406,10 @@ For example, if you want to call cars for your customers</p>
                                 on Google Play and App Store
                             </div>
                         </div>
-                        <div class="section-4-footer-center">
+                        <!-- <div class="section-4-footer-center">
                             <img src="https://lh3.googleusercontent.com/d/1u6kNwhagsaA2cL73k3JDXGp3Ia31hRn0" alt="Google Play">
                             <img src="https://lh3.googleusercontent.com/d/1W4md9Diwd3Ip0aapQB0hlwEdeZ54qd5o" alt="App Store">
-                        </div>
+                        </div> -->
                         <button class="download-now-btn" onclick="downloadApps()">Download Now</button>
                     </div>
                 </div>
@@ -2436,40 +2426,40 @@ For example, if you want to call cars for your customers</p>
                         <div class="faq-item active">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <span class="faq-icon">×</span>
-                                <span>What is Tawasul Limousine for business?</span>
+                                <span>How can I book a ride with Tawasul Limo?</span>
                             </div>
                             <div class="faq-answer">
-                                <p>This is a special service that makes it easy to manage and control all corporate taxi rides in your company.</p>
+                                <p>You can book your ride by calling our call center 600 55 95 95 or by sending your details to support@tawasullimo.ae.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <span class="faq-icon">+</span>
-                                <span>What does it take to get connected?</span>
+                                <span>Is your service available 24/7?</span>
                             </div>
                             <div class="faq-answer">
-                                <p>Getting connected is simple. Contact our business team, provide your company details, and we'll set up your corporate account within 24-48 hours.</p>
+                                <p>Yes, Tawasul Limo operates 24 hours a day, 7 days a week, including holidays.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <span class="faq-icon">+</span>
-                                <span>How can my employees order taxi?</span>
+                                <span>What information do I need to provide to book a ride?</span>
                             </div>
                             <div class="faq-answer">
-                                <p>Employees can order through our mobile app by selecting the corporate payment option, or you can book rides for them through our web interface.</p>
+                                <p>Please share your name, pickup location, drop-off location, date, time, and number of passengers when you contact us.</p>
                             </div>
                         </div>
 
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <span class="faq-icon">+</span>
-                                <span>What is your advantage for the company?</span>
+                                <span>How do I know if my booking is confirmed?</span>
                             </div>
                             <div class="faq-answer">
-                                <p>We offer transparent reporting, cost control, VAT deduction benefits, flexible employee settings, and complete trip transparency for better expense management.</p>
+                                <p>You will receive a confirmation by email or phone once your booking is processed.</p>
                             </div>
                         </div>
                     </div>
@@ -2478,40 +2468,43 @@ For example, if you want to call cars for your customers</p>
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <span class="faq-icon">+</span>
-                                <span>What settings and limits can I enter in the system?</span>
+                                <span>Can I make changes to my booking?</span>
                             </div>
                             <div class="faq-answer">
-                                <p>You can set vehicle class restrictions, approved pickup/drop-off locations, spending limits per employee, and specify allowed days/times for travel.</p>
+                              <p>Yes, just contact our support team via phone or email and we’ll assist you with any changes.</p>                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <span class="faq-icon">+</span>
+                                <span>What types of vehicles do you offer?</span>
+                            </div>
+                            <div class="faq-answer">
+                                <p>
+                                    We provide a luxurious fleet of sedans, SUVs, and executive vehicles — all clean, comfortable, and well-maintained.
+                                </p>
                             </div>
                         </div>
 
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <span class="faq-icon">+</span>
-                                <span>Is there any subscription fee for the product?</span>
+                                <span>Are your drivers trained and professional?</span>
                             </div>
                             <div class="faq-answer">
-                                <p>No, there are no subscription fees. You only pay for the rides your employees take, with transparent pricing and detailed billing.</p>
+                                <p>
+                                    Absolutely. All our chauffeurs are licensed, experienced, and professionally trained to ensure a safe and pleasant journey.
+                                </p>
                             </div>
                         </div>
 
                         <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
                                 <span class="faq-icon">+</span>
-                                <span>Is there a possibility of deferred payment?</span>
+                                <span>How can I share feedback or a complaint?</span>
                             </div>
                             <div class="faq-answer">
-                                <p>Yes, we offer flexible payment terms for corporate accounts, including monthly billing and credit arrangements based on your company's requirements.</p>
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFAQ(this)">
-                                <span class="faq-icon">+</span>
-                                <span>Is VAT included in the cost of rides?</span>
-                            </div>
-                            <div class="faq-answer">
-                                <p>Yes, VAT is included in all ride costs. As a VAT-registered company, you can reclaim VAT on business travel expenses through our detailed invoicing.</p>
+                                <p>You can email us anytime at support@tawasullimo.ae or call our customer care team directly.</p>
                             </div>
                         </div>
                     </div>
@@ -2543,8 +2536,13 @@ For example, if you want to call cars for your customers</p>
                             <li><a href="#contact">Contact Us</a></li>
                         </ul>
                     </div>
-                    
+                       <div>
+                        
+                     <p style="color: #B6B6B6;font-size: 12px;">Book Your Journey Today</p>
+                   <p style="color: #B6B6B6;font-size: 12px;"> Booking:<a href="tel:600 55 95 95" style="color: #B6B6B6;font-size: 12px;"> 600 55 95 95</a></p>
+                    </div>
                     <div class="footer-newsletter">
+
                         <div class="newsletter-form">
                             <div class="newsletter-input">
                                 <input type="email" placeholder="Enter your email" required>
@@ -2556,14 +2554,14 @@ For example, if you want to call cars for your customers</p>
             </div>
             
             <div class="footer-bottom">
-                <div class="footer-apps">
+                <!-- <div class="footer-apps">
                     <a href="#" class="app-button" onclick="downloadApp('android')">
                         <img src="https://lh3.googleusercontent.com/d/1u6kNwhagsaA2cL73k3JDXGp3Ia31hRn0" alt="Google Play">
                     </a>
                     <a href="#" class="app-button" onclick="downloadApp('ios')">
                         <img src="https://lh3.googleusercontent.com/d/1W4md9Diwd3Ip0aapQB0hlwEdeZ54qd5o" alt="App Store">
                     </a>
-                </div>
+                </div> -->
                 
                 <div class="footer-copyright">
                     <p>&copy; Copyright © 2025. Tawasul Limousine</p>
