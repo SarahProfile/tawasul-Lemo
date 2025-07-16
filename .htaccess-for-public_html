@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Redirect all requests to the tawasullemo/public directory
+RewriteCond %{REQUEST_URI} !^/tawasullemo/public/
+RewriteRule ^tawasullemo/(.*)$ /tawasullemo/public/$1 [L]
+
+# Handle Laravel routing
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^tawasullemo/public/(.*)$ /tawasullemo/public/index.php [L]

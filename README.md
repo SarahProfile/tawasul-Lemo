@@ -147,10 +147,5 @@ Configure SMTP settings in `.env` for booking notifications:
 4. Test thoroughly
 5. Submit a pull request
 
-## Support
 
-For support or questions, contact: support@tawasullimo.ae
 
-## License
-
-This project is proprietary software for Tawasul Limousine.
