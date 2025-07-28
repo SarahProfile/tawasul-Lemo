@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\ContactController;
 
 Route::get('/', function () {
     return view('home');
@@ -12,6 +13,18 @@ Route::get('/', function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+Route::get('/services', function () {
+    return view('services');
+})->name('services');
+
+Route::get('/career', function () {
+    return view('career');
+})->name('career');
+
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 
 // Authentication Routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -23,6 +36,9 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 // Booking Routes
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
+
+// Contact Routes
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Admin Routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {

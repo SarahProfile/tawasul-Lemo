@@ -8,9 +8,9 @@
             <nav>
                 <ul>
                     <li><a href="{{ route('about') }}">About Us</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Careers</a></li>
-                    <li><a href="#contact">Contact Us</a></li>
+                    <li><a href="{{ route('services') }}">Services</a></li>
+                    <li><a href="{{ route('career') }}">Careers</a></li>
+                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
                 </ul>
             </nav>
             <div class="header-buttons">
@@ -35,9 +35,9 @@
             <button class="mobile-menu-close" onclick="closeMobileMenu()">×</button>
             <ul>
                 <li><a href="{{ route('about') }}" onclick="closeMobileMenu()">About Us</a></li>
-                <li><a href="#services" onclick="closeMobileMenu()">Services</a></li>
-                <li><a href="#contact" onclick="closeMobileMenu()">Careers</a></li>
-                <li><a href="#contact" onclick="closeMobileMenu()">Contact Us</a></li>
+                <li><a href="{{ route('services') }}" onclick="closeMobileMenu()">Services</a></li>
+                <li><a href="{{ route('career') }}" onclick="closeMobileMenu()">Careers</a></li>
+                <li><a href="{{ route('contact') }}" onclick="closeMobileMenu()">Contact Us</a></li>
             </ul>
             <div class="mobile-menu-buttons">
                 @auth
