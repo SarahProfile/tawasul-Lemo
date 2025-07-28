@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('{{ asset('assets/contact-banner.jpg') }}') no-repeat center center;
+        background: url('{{ asset(\App\Models\PageContent::getContent('contact', 'banner', 'background_image', 'assets/contact-banner.jpg')) }}') no-repeat center center;
         background-size: cover;
         background-attachment: scroll;
         z-index: 1;
@@ -54,17 +54,18 @@
     
     .get-in-touch-title {
         text-align: center;
-        font-size: clamp(2rem, 4vw, 2.5rem);
+        font-size: clamp(3rem, 6vw, 4rem);
         font-weight: 300;
         color: #000000;
         margin-bottom: 3rem;
         background: #FFFFFF;
-        padding: 1rem 2rem;
+        padding: 1.5rem 2rem;
         border-radius: 10px;
         display: inline-block;
         width: auto;
         margin-left: 50%;
         transform: translateX(-50%);
+        line-height: 1.2;
     }
     
     .contact-content {
@@ -247,22 +248,30 @@
     <!-- Section Two: Get in Touch -->
     <section class="get-in-touch-section">
         <div class="get-in-touch-container">
-            <h1 class="get-in-touch-title">Get
-in touch</h1>
+            <h1 class="get-in-touch-title">{!! nl2br(\App\Models\PageContent::getContent('contact', 'get_in_touch', 'title', "Get in\ntouch")) !!}</h1>
             
             <div class="contact-content">
                 <!-- Map Container -->
                 <div class="map-container">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.2449265945736!2d55.27153441501401!3d25.194676183895187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43496ad9c645%3A0xbde66e1147b67d!2sDubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1642684739123!5m2!1sen!2s" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+                    @if($contactLocation)
+                        <iframe 
+                            src="{{ $contactLocation->map_embed_url }}" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    @else
+                        <div class="d-flex align-items-center justify-content-center h-100 bg-light">
+                            <div class="text-center">
+                                <i class="fas fa-map-marker-alt fa-3x text-muted mb-3"></i>
+                                <p class="text-muted">No location configured</p>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 
                 <!-- Contact Form -->
                 <div class="contact-form-container">
-                    <h2 class="form-title">Send a Message</h2>
+                    <h2 class="form-title" style="text-align: left;">{{ \App\Models\PageContent::getContent('contact', 'get_in_touch', 'form_title', 'Send a Message') }}</h2>
                     
                     <form class="contact-form" id="contactForm" action="{{ route('contact.store') }}" method="POST">
                         @csrf

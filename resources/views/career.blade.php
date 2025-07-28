@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('{{ asset('assets/career-banner.jpg') }}') no-repeat center center;
+        background: url('{{ asset(\App\Models\PageContent::getContent('career', 'banner', 'background_image', 'assets/career-banner.jpg')) }}') no-repeat center center;
         background-size: cover;
         background-attachment: scroll;
         z-index: 1;
@@ -239,68 +239,25 @@
     <!-- Section Two: Join Our Team -->
     <section class="join-team-section">
         <div class="join-team-container">
-            <h1 class="join-team-title">Join Our Team</h1>
+            <h1 class="join-team-title">{{ \App\Models\PageContent::getContent('career', 'join_team', 'title', 'Join Our Team') }}</h1>
             
             <div class="career-boxes-container">
-                <!-- Career Box 1: Finance & Accounts Executive -->
+                @foreach($careerPositions as $position)
                 <div class="career-box">
                     <div class="career-image-container">
-                        <img src="{{ asset('assets/finance-executive.jpg') }}" alt="Finance & Accounts Executive" class="career-image">
+                        <img src="{{ asset($position->image) }}" alt="{{ $position->title }}" class="career-image">
                     </div>
                     <div class="career-content">
-                        <h2 class="career-title">Finance & 
-Accounts Executive</h2>
+                        <h2 class="career-title">{{ $position->title }}</h2>
                         <ul class="career-list">
-                            <li>Maintain and update financial records accurately in QuickBooks, ensuring all transactions are properly categorized.</li>
-                            <li>Record and track Accounts Payable & Accounts Receivable to maintain a clear financial overview.</li>
-                            <li>Maintain an Accounts Payable report and develop a payment schedule to ensure timely payments.</li>
-                            <li>Conduct bank and account reconciliations, identify discrepancies, and resolve issues.</li>
-                            <li>Track and manage chargebacks and disputes with strong supporting documentation.</li>
-                            <li>Organize, label, and manage financial documents in Dropbox for audits and reviews.</li>
+                            @foreach($position->responsibilities as $responsibility)
+                                <li>{{ $responsibility }}</li>
+                            @endforeach
                         </ul>
-                        <button class="apply-btn" onclick="applyForPosition('Finance & Accounts Executive')">Apply Now</button>
+                        <button class="apply-btn" onclick="applyForPosition('{{ $position->title }}')">Apply Now</button>
                     </div>
                 </div>
-                
-                <!-- Career Box 2: Copywriter Offline Marketing -->
-                <div class="career-box">
-                    <div class="career-image-container">
-                        <img src="{{ asset('assets/copywriter.jpg') }}" alt="Copywriter Offline Marketing" class="career-image">
-                    </div>
-                    <div class="career-content">
-                        <h2 class="career-title">Copywriter
-Offline Marketing</h2>
-                        <ul class="career-list">
-                            <li>Maintain and update financial records accurately in QuickBooks, ensuring all transactions are properly categorized.</li>
-                            <li>Record and track Accounts Payable & Accounts Receivable to maintain a clear financial overview.</li>
-                            <li>Maintain an Accounts Payable report and develop a payment schedule to ensure timely payments.</li>
-                            <li>Conduct bank and account reconciliations, identify discrepancies, and resolve issues.</li>
-                            <li>Track and manage chargebacks and disputes with strong supporting documentation.</li>
-                            <li>Organize, label, and manage financial documents in Dropbox for audits and reviews.</li>
-                        </ul>
-                        <button class="apply-btn" onclick="applyForPosition('Copywriter Offline Marketing')">Apply Now</button>
-                    </div>
-                </div>
-                
-                <!-- Career Box 3: Data Analyst Mail Plan -->
-                <div class="career-box">
-                    <div class="career-image-container">
-                        <img src="{{ asset('assets/data-analyst.jpg') }}" alt="Data Analyst Mail Plan" class="career-image">
-                    </div>
-                    <div class="career-content">
-                        <h2 class="career-title">Data Analyst
-Mail Plan</h2>
-                        <ul class="career-list">
-                            <li>Maintain and update financial records accurately in QuickBooks, ensuring all transactions are properly categorized.</li>
-                            <li>Record and track Accounts Payable & Accounts Receivable to maintain a clear financial overview.</li>
-                            <li>Maintain an Accounts Payable report and develop a payment schedule to ensure timely payments.</li>
-                            <li>Conduct bank and account reconciliations, identify discrepancies, and resolve issues.</li>
-                            <li>Track and manage chargebacks and disputes with strong supporting documentation.</li>
-                            <li>Organize, label, and manage financial documents in Dropbox for audits and reviews.</li>
-                        </ul>
-                        <button class="apply-btn" onclick="applyForPosition('Data Analyst Mail Plan')">Apply Now</button>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

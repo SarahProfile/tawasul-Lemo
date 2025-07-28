@@ -2,7 +2,7 @@
         <section id="home" class="hero-section">
             <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Book. Ride. Arrive in Luxury.</h1>
+                    <h1 class="hero-title">{{ \App\Models\PageContent::getContent('home', 'hero', 'title', 'Book. Ride. Arrive in Luxury.') }}</h1>
                     
                     <form id="bookingForm" class="booking-form">
                         @csrf
@@ -53,7 +53,7 @@
                 </div>
                 
                 <div class="hero-image">
-                    <img src="{{ asset('assets/travel-experience.png') }}" alt="Travel Experience">
+                    <img src="{{ asset(\App\Models\PageContent::getContent('home', 'hero', 'image', 'assets/travel-experience.png')) }}" alt="Travel Experience">
                 </div>
             </div>
         </section>
@@ -95,8 +95,8 @@
                 <!-- Title at the top -->
                 <div class="benefits-title">
                     <h2>
-                        <span class="line1">Better Benefits </span>
-                        <span class="line2">For Tawasul Limousine</span>
+                        <span class="line1">{{ \App\Models\PageContent::getContent('home', 'benefits', 'title_line1', 'Better Benefits') }} </span>
+                        <span class="line2">{{ \App\Models\PageContent::getContent('home', 'benefits', 'title_line2', 'For Tawasul Limousine') }}</span>
                     </h2>
                 </div>
 
@@ -163,8 +163,8 @@
                 <div class="section-4-container">
                     <div class="section-4-content-wrapper">
                         <div class="section-4-text-container">
-                            <p style="font-size: 30px; font-weight: 100 !important;">Apply And Start Reaping The Benefits Of Using Tawasul <br> Limousine For business</p>
-                            <button class="apply-now-btn" onclick="applyNow()">Apply Now  → </button>
+                            <p style="font-size: 30px; font-weight: 100 !important;">{{ \App\Models\PageContent::getContent('home', 'section4', 'title', 'Apply And Start Reaping The Benefits Of Using Tawasul Limousine For business') }}</p>
+                            <button class="apply-now-btn" onclick="applyNow()">{{ \App\Models\PageContent::getContent('home', 'section4', 'button_text', 'Apply Now') }}  → </button>
                         </div>
                     </div>
                     
@@ -172,11 +172,10 @@
                     <div class="section-4-footer">
                         <div class="section-4-footer-left">
                             <div class="section-4-footer-logo">
-                                <img src="{{ asset('assets/logo.png') }}" alt="Travel Logo">
+                                <img src="{{ asset(\App\Models\PageContent::getContent('home', 'section4', 'logo', 'assets/logo.png')) }}" alt="Travel Logo">
                             </div>
                             <div class="section-4-footer-text">
-                                Rating Tawasul Limousine<br>
-                                on Google Play and App Store
+                                {{ \App\Models\PageContent::getContent('home', 'section4', 'footer_text', 'Rating Tawasul Limousine on Google Play and App Store') }}
                             </div>
                         </div>
                     </div>

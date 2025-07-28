@@ -73,6 +73,30 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('admin.contacts.index') }}" class="nav-link {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}">
+                                <i class="fas fa-envelope me-2"></i>
+                                Contact Messages
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.locations.index') }}" class="nav-link {{ request()->routeIs('admin.locations.*') ? 'active' : '' }}">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                Contact Locations
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.content.index') }}" class="nav-link {{ request()->routeIs('admin.content.*') ? 'active' : '' }}">
+                                <i class="fas fa-edit me-2"></i>
+                                Page Content
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.careers.index') }}" class="nav-link {{ request()->routeIs('admin.careers.*') ? 'active' : '' }}">
+                                <i class="fas fa-briefcase me-2"></i>
+                                Career Positions
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('home') }}" class="nav-link">
                                 <i class="fas fa-home me-2"></i>
                                 Back to Site

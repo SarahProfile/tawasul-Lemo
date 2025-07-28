@@ -19,11 +19,13 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/career', function () {
-    return view('career');
+    $careerPositions = \App\Models\CareerPosition::active()->ordered()->get();
+    return view('career', compact('careerPositions'));
 })->name('career');
 
 Route::get('/contact', function () {
-    return view('contact');
+    $contactLocation = \App\Models\ContactLocation::active()->ordered()->first();
+    return view('contact', compact('contactLocation'));
 })->name('contact');
 
 // Authentication Routes
@@ -49,4 +51,25 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     // User Management
     Route::resource('users', App\Http\Controllers\Admin\UserController::class);
+    
+    // Content Management
+    Route::get('/content', [App\Http\Controllers\Admin\PageContentController::class, 'index'])->name('content.index');
+    Route::get('/content/{page}/edit', [App\Http\Controllers\Admin\PageContentController::class, 'edit'])->name('content.edit');
+    Route::put('/content/{page}', [App\Http\Controllers\Admin\PageContentController::class, 'update'])->name('content.update');
+    
+    // Career Management
+    Route::resource('careers', App\Http\Controllers\Admin\CareerPositionController::class);
+    
+    // Service Items Management
+    Route::resource('service-items', App\Http\Controllers\Admin\ServiceItemController::class);
+    
+    // Contact Management
+    Route::get('/contacts', [App\Http\Controllers\Admin\ContactManagementController::class, 'index'])->name('contacts.index');
+    Route::get('/contacts/{contact}', [App\Http\Controllers\Admin\ContactManagementController::class, 'show'])->name('contacts.show');
+    Route::get('/contacts/{contact}/edit', [App\Http\Controllers\Admin\ContactManagementController::class, 'edit'])->name('contacts.edit');
+    Route::put('/contacts/{contact}', [App\Http\Controllers\Admin\ContactManagementController::class, 'update'])->name('contacts.update');
+    Route::delete('/contacts/{contact}', [App\Http\Controllers\Admin\ContactManagementController::class, 'destroy'])->name('contacts.destroy');
+    
+    // Contact Locations Management
+    Route::resource('locations', App\Http\Controllers\Admin\ContactLocationController::class);
 });

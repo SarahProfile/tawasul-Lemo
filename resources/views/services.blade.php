@@ -15,7 +15,7 @@
         position: relative;
         width: 100%;
         height: 0;
-        padding-bottom: 46%;
+        padding-bottom: 35%;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('{{ asset('assets/services-banner.jpg') }}') no-repeat center center;
+        background: url('{{ asset(\App\Models\PageContent::getContent('services', 'banner', 'background_image', 'assets/services-banner.jpg')) }}') no-repeat center center;
         background-size: cover;
         background-attachment: scroll;
         z-index: 1;
@@ -90,26 +90,29 @@
         white-space: nowrap;
         position: relative;
         width: 100%;
+        margin-top: 0;
+        z-index: 3;
     }
     
     .looping-text-content {
         display: inline-flex;
         align-items: center;
         animation: scroll-text 15s linear infinite;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         font-weight: 400;
         white-space: nowrap;
+        width: calc(200%);
     }
     
     .looping-text-content span {
         display: inline-flex;
         align-items: center;
-        margin-right: 1rem;
+        margin-right: 2rem;
     }
     
     .looping-icon {
+        height: 18px;
         width: auto;
-        height: auto;
         margin: 0 1rem;
         filter: brightness(0) invert(1);
     }
@@ -119,7 +122,7 @@
             transform: translateX(0%);
         }
         100% {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
         }
     }
     
@@ -875,9 +878,9 @@
     <section class="services-banner-section">
         <div class="services-banner-container">
             <div class="services-banner-content">
-                <h1 class="services-banner-title">Setting a new standard in premium experience.</h1>
+                <h1 class="services-banner-title">{{ \App\Models\PageContent::getContent('services', 'banner', 'title', 'Setting a new standard in premium experience.') }}</h1>
                 <p class="services-banner-text">
-                    Tawasul Limousine presents a renewed range of vehicles designed to suit every occasion, from executive travel to everyday convenience. Each vehicle combines luxury, comfort, and intelligent technology to deliver a seamless, elevated experience that meets the highest standards of modern mobility.
+                    {{ \App\Models\PageContent::getContent('services', 'banner', 'description', 'Tawasul Limousine presents a renewed range of vehicles designed to suit every occasion, from executive travel to everyday convenience. Each vehicle combines luxury, comfort, and intelligent technology to deliver a seamless, elevated experience that meets the highest standards of modern mobility.') }}
                 </p>
             </div>
         </div>
@@ -909,15 +912,15 @@
     <section class="services-selection-section">
         <div class="services-selection-container">
             <div class="services-selection-image-container">
-                <img src="{{ asset('assets/services-section2-left.jpg') }}" alt="Service Selection" class="services-selection-image">
+                <img src="{{ asset(\App\Models\PageContent::getContent('services', 'selection', 'image', 'assets/services-section2-left.jpg')) }}" alt="Service Selection" class="services-selection-image">
             </div>
             <div class="services-selection-content">
-                <h2 class="services-selection-title">Tailored luxury for every journey</h2>
+                <h2 class="services-selection-title">{{ \App\Models\PageContent::getContent('services', 'selection', 'title', 'Tailored luxury for every journey') }}</h2>
                 <p class="services-selection-text">
-                    At Tawasul Limousine, every vehicle in our fleet is chosen with purpose. Our Luxury Selection is crafted for moments that demand more than just transportation. These are vehicles where sophistication meets indulgence, ideal for formal occasions, executive transfers, or any instance where presence matters.
+                    {{ \App\Models\PageContent::getContent('services', 'selection', 'description_1', 'At Tawasul Limousine, every vehicle in our fleet is chosen with purpose. Our Luxury Selection is crafted for moments that demand more than just transportation. These are vehicles where sophistication meets indulgence, ideal for formal occasions, executive transfers, or any instance where presence matters.') }}
                 </p>
                 <p class="services-selection-text">
-                    For everyday travel, our Day-to-Day Selection offers a seamless blend of comfort and elevated style, ensuring that routine journeys still feel refined. For clients with unique needs or preferences, additional premium models are available upon request, allowing us to deliver a truly bespoke experience.
+                    {{ \App\Models\PageContent::getContent('services', 'selection', 'description_2', 'For everyday travel, our Day-to-Day Selection offers a seamless blend of comfort and elevated style, ensuring that routine journeys still feel refined. For clients with unique needs or preferences, additional premium models are available upon request, allowing us to deliver a truly bespoke experience.') }}
                 </p>
                 
                 <div class="services-boxes-container">
@@ -950,7 +953,7 @@
     <section class="fleet-excellence-section">
         <div class="fleet-excellence-container">
             <div class="fleet-excellence-left">
-                <h2 class="fleet-excellence-title">Fleet of<br>Excellence</h2>
+                <h2 class="fleet-excellence-title">{{ \App\Models\PageContent::getContent('services', 'fleet', 'title', 'Fleet of Excellence') }}</h2>
             </div>
             <div class="fleet-excellence-right">
                 <p class="fleet-excellence-text">
@@ -966,9 +969,9 @@
     <section class="luxury-vehicles-section">
         <div class="luxury-vehicles-container">
             <div class="luxury-vehicles-left">
-                <h2 class="luxury-vehicles-title">Range of<br>Luxury Vehicles</h2>
+                <h2 class="luxury-vehicles-title">{{ \App\Models\PageContent::getContent('services', 'luxury_vehicles', 'title', 'Range of Luxury Vehicles') }}</h2>
                 <div class="luxury-vehicles-image-container">
-                    <img src="{{ asset('assets/luxury-vehicles-range.jpg') }}" alt="Range of Luxury Vehicles" class="luxury-vehicles-image">
+                    <img src="{{ asset(\App\Models\PageContent::getContent('services', 'luxury_vehicles', 'image', 'assets/luxury-vehicles-range.jpg')) }}" alt="Range of Luxury Vehicles" class="luxury-vehicles-image">
                 </div>
             </div>
             <div class="luxury-vehicles-right">
@@ -1007,10 +1010,10 @@
     <section class="our-services-section">
         <div class="our-services-container">
             <div class="our-services-left">
-                <img src="{{ asset('assets/section5-image.jpg') }}" alt="Our Services" class="our-services-image">
+                <img src="{{ asset(\App\Models\PageContent::getContent('services', 'our_services', 'image', 'assets/section5-image.jpg')) }}" alt="Our Services" class="our-services-image">
             </div>
             <div class="our-services-right">
-                <h2 class="our-services-title">Our Services</h2>
+                <h2 class="our-services-title">{{ \App\Models\PageContent::getContent('services', 'our_services', 'title', 'Our Services') }}</h2>
                 <div class="services-lists-container">
                     <div class="services-left-list">
                         <div class="service-item">
@@ -1057,7 +1060,7 @@
     <section class="our-technology-section">
         <div class="our-technology-container">
             <div class="our-technology-left">
-                <h2 class="our-technology-title">Our Technology</h2>
+                <h2 class="our-technology-title">{{ \App\Models\PageContent::getContent('services', 'technology', 'title', 'Our Technology') }}</h2>
                 <div class="technology-lists-container">
                     <div class="technology-left-list">
                         <div class="technology-item">
@@ -1094,7 +1097,7 @@
                 </div>
             </div>
             <div class="our-technology-right">
-                <img src="{{ asset('assets/section6-image.jpg') }}" alt="Our Technology" class="our-technology-image">
+                <img src="{{ asset(\App\Models\PageContent::getContent('services', 'technology', 'image', 'assets/section6-image.jpg')) }}" alt="Our Technology" class="our-technology-image">
             </div>
         </div>
     </section>

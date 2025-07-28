@@ -15,7 +15,7 @@
         position: relative;
         width: 100%;
         height: 0;
-        padding-bottom: 46%;
+        padding-bottom: 35%;
         overflow: hidden;
         display: flex;
         align-items: center;
@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('{{ asset('assets/about-banner-new.jpg') }}') no-repeat center center;
+        background: url('{{ asset(\App\Models\PageContent::getContent('about', 'hero', 'background_image', 'assets/about-banner-new.jpg')) }}') no-repeat center center;
         background-size: cover;
         background-attachment: scroll;
         z-index: 1;
@@ -90,26 +90,29 @@
         white-space: nowrap;
         position: relative;
         width: 100%;
+        margin-top: 0;
+        z-index: 3;
     }
     
     .looping-text-content {
         display: inline-flex;
         align-items: center;
         animation: scroll-text 15s linear infinite;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         font-weight: 400;
         white-space: nowrap;
+        width: calc(200%);
     }
     
     .looping-text-content span {
         display: inline-flex;
         align-items: center;
-        margin-right: 1rem;
+        margin-right: 2rem;
     }
     
     .looping-icon {
+        height: 18px;
         width: auto;
-        height: auto;
         margin: 0 1rem;
         filter: brightness(0) invert(1);
     }
@@ -119,14 +122,14 @@
             transform: translateX(0%);
         }
         100% {
-            transform: translateX(-100%);
+            transform: translateX(-50%);
         }
     }
     
     /* Mobile Responsive */
     @media (max-width: 768px) {
         .about-banner-section {
-            padding-bottom: 75%; /* Adjust for mobile aspect ratio */
+            padding-bottom: 60%; /* Adjust for mobile aspect ratio */
         }
         
         .about-banner-section::before {
@@ -194,7 +197,7 @@
         width: 100%;
         height: auto;
         border-radius: 10px;
-        object-fit: cover;
+        object-fit: contain;
     }
     
     .vision-content {
@@ -283,7 +286,7 @@
         width: 100%;
         height: auto;
         border-radius: 10px;
-        object-fit: cover;
+        object-fit: contain;
     }
     
     .mission-title {
@@ -697,9 +700,9 @@
     <section class="about-banner-section">
         <div class="about-banner-container">
             <div class="about-banner-content">
-                <h1 class="about-banner-title">Driven by Excellence</h1>
+                <h1 class="about-banner-title">{{ \App\Models\PageContent::getContent('about', 'hero', 'title', 'Driven by Excellence') }}</h1>
                 <p class="about-banner-text">
-                    Tawasul Limousine redefines premium transport in the UAE, offering luxury mobility services that blend elegance, safety, and innovation. Whether it's a corporate transfer, hotel pickup, or private ride, we deliver a seamless experience powered by smart technologies and elite customer service.
+                    {{ \App\Models\PageContent::getContent('about', 'hero', 'description', 'Tawasul Limousine redefines premium transport in the UAE, offering luxury mobility services that blend elegance, safety, and innovation. Whether it\'s a corporate transfer, hotel pickup, or private ride, we deliver a seamless experience powered by smart technologies and elite customer service.') }}
                 </p>
             </div>
         </div>
@@ -731,12 +734,12 @@
     <section class="vision-section">
         <div class="vision-container">
             <div class="vision-image-container">
-                <img src="{{ asset('assets/vision-image.jpg') }}" alt="Our Vision" class="vision-image">
+                <img src="{{ asset(\App\Models\PageContent::getContent('about', 'company', 'image', 'assets/vision-image.jpg')) }}" alt="Our Company" class="vision-image">
             </div>
             <div class="vision-content">
-                <h2 class="vision-title">Our Vision</h2>
+                <h2 class="vision-title">{{ \App\Models\PageContent::getContent('about', 'company', 'title', 'Our Vision') }}</h2>
                 <p class="vision-text">
-                    To become the UAE's benchmark for luxury mobility by blending cutting-edge technology with refined services, delivering seamless, intelligent, and sustainable limousine experiences.
+                    {{ \App\Models\PageContent::getContent('about', 'company', 'description', 'To become the UAE\'s benchmark for luxury mobility by blending cutting-edge technology with refined services, delivering seamless, intelligent, and sustainable limousine experiences.') }}
                 </p>
             </div>
         </div>
@@ -746,9 +749,9 @@
     <section class="mission-section">
         <div class="mission-container">
             <div class="mission-content">
-                <h2 class="mission-title">Our Mission</h2>
+                <h2 class="mission-title">{{ \App\Models\PageContent::getContent('about', 'values', 'title', 'Our Mission') }}</h2>
                 <p class="mission-text">
-                    To deliver a world-class limousine experience powered by innovation. Using AI, real-time booking, and smart mobility solutions, we ensure every journey is safe, punctual, and luxuriously comfortable.
+                    {{ \App\Models\PageContent::getContent('about', 'values', 'excellence_description', 'To deliver a world-class limousine experience powered by innovation. Using AI, real-time booking, and smart mobility solutions, we ensure every journey is safe, punctual, and luxuriously comfortable.') }}
                 </p>
             </div>
             <div class="mission-image-container">
