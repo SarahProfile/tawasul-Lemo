@@ -36,6 +36,12 @@ class PageContentSeeder extends Seeder
                 'footer_text' => 'Rating Tawasul Limousine on Google Play and App Store',
                 'background_image' => 'assets/section4-desktop.jpg',
                 'logo' => 'assets/logo.png'
+            ],
+            // FAQ Section
+            'faq' => [
+                'title' => 'Frequently Asked Questions',
+                'background_desktop' => 'assets/faq-desktop.jpg',
+                'background_mobile' => 'assets/faq-mobile.jpg'
             ]
         ];
 
@@ -70,6 +76,12 @@ class PageContentSeeder extends Seeder
                 'reliability_description' => 'Dependable service you can count on, every time.',
                 'luxury_title' => 'Luxury',
                 'luxury_description' => 'Premium comfort and sophistication in every journey.'
+            ],
+            // FAQ Section
+            'faq' => [
+                'title' => 'Frequently Asked Questions',
+                'background_desktop' => 'assets/faq-desktop.jpg',
+                'background_mobile' => 'assets/faq-mobile.jpg'
             ]
         ];
 
@@ -86,7 +98,11 @@ class PageContentSeeder extends Seeder
             'banner' => [
                 'title' => 'Setting a new standard in premium experience.',
                 'description' => 'Tawasul Limousine presents a renewed range of vehicles designed to suit every occasion, from executive travel to everyday convenience. Each vehicle combines luxury, comfort, and intelligent technology to deliver a seamless, elevated experience that meets the highest standards of modern mobility.',
-                'background_image' => 'assets/services-banner.jpg'
+                'background_image' => 'assets/services-banner.jpg',
+                'background_desktop' => 'assets/services-banner.jpg',
+                'background_mobile' => 'assets/services-banner-mobile.jpg',
+                'mobile_title' => 'Premium Experience',
+                'mobile_description' => 'Luxury vehicles designed for every occasion, combining comfort and intelligent technology for an elevated travel experience.'
             ],
             // Looping Text
             'looping' => [
@@ -104,7 +120,9 @@ class PageContentSeeder extends Seeder
             'fleet' => [
                 'title' => 'Fleet of Excellence',
                 'description' => 'What sets Tawasul Limousine apart is not just the elegance of its vehicles, but the thoughtfulness behind every option. Our fleet is meticulously curated to cater to diverse needs, whether it\'s the refined luxury of our high-end models or the elevated ease of our day-to-day selection. Each vehicle is maintained to the highest standards and equipped with advanced infotainment, smart safety systems, and discreet chauffeurs. For clients seeking something truly exceptional, bespoke premium models are available upon request, ensuring that no journey feels ordinary. At Tawasul, every ride is a reflection of precision, comfort, and class.',
-                'background_image' => 'assets/services-section3-bg.jpg'
+                'background_image' => 'assets/services-section3-bg.jpg',
+                'background_desktop' => 'assets/services-section3-bg.jpg',
+                'background_mobile' => 'assets/services-section3-bg-mobile.jpg'
             ],
             // Luxury Vehicles Section
             'luxury_vehicles' => [
@@ -120,6 +138,12 @@ class PageContentSeeder extends Seeder
             'technology' => [
                 'title' => 'Our Technology',
                 'image' => 'assets/section6-image.jpg'
+            ],
+            // FAQ Section
+            'faq' => [
+                'title' => 'Frequently Asked Questions',
+                'background_desktop' => 'assets/faq-desktop.jpg',
+                'background_mobile' => 'assets/faq-mobile.jpg'
             ]
         ];
 
@@ -140,6 +164,12 @@ class PageContentSeeder extends Seeder
             'get_in_touch' => [
                 'title' => 'Get in touch',
                 'form_title' => 'Send a Message'
+            ],
+            // FAQ Section
+            'faq' => [
+                'title' => 'Frequently Asked Questions',
+                'background_desktop' => 'assets/faq-desktop.jpg',
+                'background_mobile' => 'assets/faq-mobile.jpg'
             ]
         ];
 
@@ -159,6 +189,12 @@ class PageContentSeeder extends Seeder
             // Join Team Section
             'join_team' => [
                 'title' => 'Join Our Team'
+            ],
+            // FAQ Section
+            'faq' => [
+                'title' => 'Frequently Asked Questions',
+                'background_desktop' => 'assets/faq-desktop.jpg',
+                'background_mobile' => 'assets/faq-mobile.jpg'
             ]
         ];
 

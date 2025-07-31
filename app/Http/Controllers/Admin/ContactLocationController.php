@@ -28,8 +28,8 @@ class ContactLocationController extends Controller
             'country' => 'required|string|max:255',
             'phone' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
-            'latitude' => 'required|numeric|between:-90,90',
-            'longitude' => 'required|numeric|between:-180,180',
+            'latitude' => 'nullable|numeric|between:-90,90',
+            'longitude' => 'nullable|numeric|between:-180,180',
             'map_embed_url' => 'required|url',
             'order' => 'nullable|integer|min:0',
             'is_active' => 'boolean'
@@ -60,8 +60,8 @@ class ContactLocationController extends Controller
             'country' => 'required|string|max:255',
             'phone' => 'nullable|string|max:255',
             'email' => 'nullable|email|max:255',
-            'latitude' => 'required|numeric|between:-90,90',
-            'longitude' => 'required|numeric|between:-180,180',
+            'latitude' => 'nullable|numeric|between:-90,90',
+            'longitude' => 'nullable|numeric|between:-180,180',
             'map_embed_url' => 'required|url',
             'order' => 'nullable|integer|min:0',
             'is_active' => 'boolean'

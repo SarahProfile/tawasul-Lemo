@@ -237,6 +237,71 @@
             font-size: 1.2rem;
         }
     }
+    
+    /* Location Info Styles */
+    .location-info-container {
+        background: #f8f9fa;
+        padding: 2rem;
+        border-radius: 5px;
+        margin: 1rem 0;
+    }
+    
+    .location-info-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #000000;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    
+    .location-details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+    
+    .location-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+    
+    .location-icon {
+        color: #FF750F;
+        font-size: 1.2rem;
+        margin-top: 0.2rem;
+        flex-shrink: 0;
+    }
+    
+    .location-content h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #000000;
+        margin: 0 0 0.25rem 0;
+    }
+    
+    .location-content p {
+        font-size: 0.9rem;
+        color: #666666;
+        margin: 0;
+        line-height: 1.4;
+    }
+    
+    @media (max-width: 768px) {
+        .location-info-container {
+            padding: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        
+        .location-details {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .location-info-title {
+            font-size: 1.3rem;
+        }
+    }
 </style>
 @endpush
 
@@ -268,6 +333,43 @@
                         </div>
                     @endif
                 </div>
+                
+                <!-- Location Information -->
+                @if($contactLocation)
+                <div class="location-info-container">
+                    <h3 class="location-info-title">{{ $contactLocation->name }}</h3>
+                    <div class="location-details">
+                        <div class="location-item">
+                            <i class="fas fa-map-marker-alt location-icon"></i>
+                            <div class="location-content">
+                                <h4>Address</h4>
+                                <p>{{ $contactLocation->address }}<br>{{ $contactLocation->city }}, {{ $contactLocation->country }}</p>
+                            </div>
+                        </div>
+                        
+                        @if($contactLocation->phone)
+                        <div class="location-item">
+                            <i class="fas fa-phone location-icon"></i>
+                            <div class="location-content">
+                                <h4>Phone</h4>
+                                <p><a href="tel:{{ $contactLocation->phone }}" style="color: #666666; text-decoration: none;">{{ $contactLocation->phone }}</a></p>
+                            </div>
+                        </div>
+                        @endif
+                        
+                        @if($contactLocation->email)
+                        <div class="location-item">
+                            <i class="fas fa-envelope location-icon"></i>
+                            <div class="location-content">
+                                <h4>Email</h4>
+                                <p><a href="mailto:{{ $contactLocation->email }}" style="color: #666666; text-decoration: none;">{{ $contactLocation->email }}</a></p>
+                            </div>
+                        </div>
+                        @endif
+                        
+                    </div>
+                </div>
+                @endif
                 
                 <!-- Contact Form -->
                 <div class="contact-form-container">
@@ -305,11 +407,11 @@
     <!-- Section Three: Apply for Business (Same as Home Section 4) -->
     <section class="section-4">
         <div class="section-4-content">
-            <div class="section-4-container">
+            <div class="section-4-container" style="--section4-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('contact', 'section4', 'background_desktop', 'assets/section4-desktop.jpg')) }}'); --section4-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('contact', 'section4', 'background_mobile', 'assets/section4-mobile.jpg')) }}');">
                 <div class="section-4-content-wrapper">
                     <div class="section-4-text-container">
-                        <p style="font-size: 30px; font-weight: 100 !important;">Apply And Start Reaping The Benefits Of Using Tawasul <br> Limousine For business</p>
-                        <button class="apply-now-btn" onclick="applyNow()">Apply Now  → </button>
+                        <p style="font-size: 30px; font-weight: 100 !important;">{{ \App\Models\PageContent::getContent('contact', 'section4', 'title', 'Apply And Start Reaping The Benefits Of Using Tawasul Limousine For business') }}</p>
+                        <button class="apply-now-btn" onclick="applyNow()">{{ \App\Models\PageContent::getContent('contact', 'section4', 'button_text', 'Apply Now') }}  → </button>
                     </div>
                 </div>
                 
@@ -317,11 +419,10 @@
                 <div class="section-4-footer">
                     <div class="section-4-footer-left">
                         <div class="section-4-footer-logo">
-                            <img src="{{ asset('assets/logo.png') }}" alt="Travel Logo">
+                            <img src="{{ asset(\App\Models\PageContent::getContent('contact', 'section4', 'logo', 'assets/logo.png')) }}" alt="Travel Logo">
                         </div>
                         <div class="section-4-footer-text">
-                            Rating Tawasul Limousine<br>
-                            on Google Play and App Store
+                            {{ \App\Models\PageContent::getContent('contact', 'section4', 'footer_text', 'Rating Tawasul Limousine on Google Play and App Store') }}
                         </div>
                     </div>
                 </div>
@@ -330,9 +431,9 @@
     </section>
 
     <!-- Section Four: FAQ (Same as Home Section 5) -->
-    <section class="faq-section section">
+    <section class="faq-section section" style="--faq-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('contact', 'faq', 'background_desktop', 'assets/faq-desktop.jpg')) }}'); --faq-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('contact', 'faq', 'background_mobile', 'assets/faq-mobile.jpg')) }}');">
         <div class="section-content">
-            <h2>Frequently Asked Questions</h2>
+            <h2>{{ \App\Models\PageContent::getContent('contact', 'faq', 'title', 'Frequently Asked Questions') }}</h2>
             
             <div class="faq-container">
                 <div class="faq-column">

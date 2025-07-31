@@ -265,11 +265,11 @@
     <!-- Section Three: Apply for Business (Same as Home Section 4) -->
     <section class="section-4">
         <div class="section-4-content">
-            <div class="section-4-container">
+            <div class="section-4-container" style="--section4-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('career', 'section4', 'background_desktop', 'assets/section4-desktop.jpg')) }}'); --section4-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('career', 'section4', 'background_mobile', 'assets/section4-mobile.jpg')) }}');">
                 <div class="section-4-content-wrapper">
                     <div class="section-4-text-container">
-                        <p style="font-size: 30px; font-weight: 100 !important;">Apply And Start Reaping The Benefits Of Using Tawasul <br> Limousine For business</p>
-                        <button class="apply-now-btn" onclick="applyNow()">Apply Now  → </button>
+                        <p style="font-size: 30px; font-weight: 100 !important;">{{ \App\Models\PageContent::getContent('career', 'section4', 'title', 'Apply And Start Reaping The Benefits Of Using Tawasul Limousine For business') }}</p>
+                        <button class="apply-now-btn" onclick="applyNow()">{{ \App\Models\PageContent::getContent('career', 'section4', 'button_text', 'Apply Now') }}  → </button>
                     </div>
                 </div>
                 
@@ -277,11 +277,10 @@
                 <div class="section-4-footer">
                     <div class="section-4-footer-left">
                         <div class="section-4-footer-logo">
-                            <img src="{{ asset('assets/logo.png') }}" alt="Travel Logo">
+                            <img src="{{ asset(\App\Models\PageContent::getContent('career', 'section4', 'logo', 'assets/logo.png')) }}" alt="Travel Logo">
                         </div>
                         <div class="section-4-footer-text">
-                            Rating Tawasul Limousine<br>
-                            on Google Play and App Store
+                            {{ \App\Models\PageContent::getContent('career', 'section4', 'footer_text', 'Rating Tawasul Limousine on Google Play and App Store') }}
                         </div>
                     </div>
                 </div>
@@ -290,9 +289,9 @@
     </section>
 
     <!-- Section Four: FAQ (Same as Home Section 5) -->
-    <section class="faq-section section">
+    <section class="faq-section section" style="--faq-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('career', 'faq', 'background_desktop', 'assets/faq-desktop.jpg')) }}'); --faq-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('career', 'faq', 'background_mobile', 'assets/faq-mobile.jpg')) }}');">
         <div class="section-content">
-            <h2>Frequently Asked Questions</h2>
+            <h2>{{ \App\Models\PageContent::getContent('career', 'faq', 'title', 'Frequently Asked Questions') }}</h2>
             
             <div class="faq-container">
                 <div class="faq-column">

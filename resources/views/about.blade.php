@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('{{ asset(\App\Models\PageContent::getContent('about', 'hero', 'background_image', 'assets/about-banner-new.jpg')) }}') no-repeat center center;
+        background: var(--banner-bg-desktop, url('{{ asset(\App\Models\PageContent::getContent('about', 'hero', 'background_image', 'assets/about-banner-new.jpg')) }}')) no-repeat center center;
         background-size: cover;
         background-attachment: scroll;
         z-index: 1;
@@ -107,7 +107,8 @@
     .looping-text-content span {
         display: inline-flex;
         align-items: center;
-        margin-right: 2rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
     }
     
     .looping-icon {
@@ -126,18 +127,59 @@
         }
     }
     
+    /* Responsive Content Display */
+    .desktop-content {
+        display: block !important;
+    }
+    
+    .mobile-content {
+        display: none !important;
+    }
+    
     /* Mobile Responsive */
     @media (max-width: 768px) {
         .about-banner-section {
-            padding-bottom: 60%; /* Adjust for mobile aspect ratio */
+            height: auto;
+            padding-bottom: 0;
+            position: relative;
+            min-height: 50vh;
+        }
+        
+        .desktop-content {
+            display: none !important;
+        }
+        
+        .mobile-content {
+            display: block !important;
         }
         
         .about-banner-section::before {
-            background-size: cover;
+            background: var(--banner-bg-mobile) no-repeat center center;
+            background-size: contain;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         
         .about-banner-container {
-            padding: 6rem 1rem 4rem 1rem;
+            position: relative;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            min-height: 50vh;
+            padding: 2rem 1rem 8rem 1rem;
+            z-index: 3;
+            padding-bottom: 60px !important;
+        }
+        
+        .about-banner-content {
+            text-align: center;
+            max-width: 90%;
+            padding: 0;
         }
         
         .about-banner-title {
@@ -154,8 +196,8 @@
         }
         
         .looping-icon {
+            height: 12px;
             width: auto;
-            height: auto;
         }
     }
     
@@ -259,7 +301,7 @@
     
     /* Section Three - Mission */
     .mission-section {
-        padding: 6rem 0;
+        padding: 0 rem 0rem 6rem 0;
         background: #FFFFFF;
     }
     
@@ -308,7 +350,7 @@
     /* Mobile Mission Section */
     @media (max-width: 768px) {
         .mission-section {
-            padding: 4rem 0;
+            padding: 0rem 0;
         }
         
         .mission-container {
@@ -692,18 +734,37 @@
             font-size: 0.8rem;
         }
     }
+    
+    /* About page section-4 mobile background */
+    @media (max-width: 768px) {
+        .section-4-container {
+            background-image: url('{{ asset(\App\Models\PageContent::getContent('about', 'section4', 'background_mobile', 'assets/section4-mobile.jpg')) }}') !important;
+            background-size: cover !important;
+        }
+    }
 </style>
 @endpush
 
 @section('content')
     <!-- Section One: Banner -->
-    <section class="about-banner-section">
+    <section class="about-banner-section" style="--banner-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('about', 'hero', 'background_desktop', 'assets/about-banner-new.jpg')) }}'); --banner-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('about', 'hero', 'background_mobile', 'assets/about-banner-mobile.jpg')) }}');">
         <div class="about-banner-container">
             <div class="about-banner-content">
-                <h1 class="about-banner-title">{{ \App\Models\PageContent::getContent('about', 'hero', 'title', 'Driven by Excellence') }}</h1>
-                <p class="about-banner-text">
-                    {{ \App\Models\PageContent::getContent('about', 'hero', 'description', 'Tawasul Limousine redefines premium transport in the UAE, offering luxury mobility services that blend elegance, safety, and innovation. Whether it\'s a corporate transfer, hotel pickup, or private ride, we deliver a seamless experience powered by smart technologies and elite customer service.') }}
-                </p>
+                <!-- Desktop Content -->
+                <div class="desktop-content d-none d-md-block">
+                    <h1 class="about-banner-title">{{ \App\Models\PageContent::getContent('about', 'hero', 'title', 'Driven by Excellence') }}</h1>
+                    <p class="about-banner-text">
+                        {{ \App\Models\PageContent::getContent('about', 'hero', 'description', 'Tawasul Limousine redefines premium transport in the UAE, offering luxury mobility services that blend elegance, safety, and innovation. Whether it\'s a corporate transfer, hotel pickup, or private ride, we deliver a seamless experience powered by smart technologies and elite customer service.') }}
+                    </p>
+                </div>
+                
+                <!-- Mobile Content -->
+                <div class="mobile-content d-md-none">
+                    <h1 class="about-banner-title">{{ \App\Models\PageContent::getContent('about', 'hero', 'mobile_title', 'Driven by Excellence') }}</h1>
+                    <p class="about-banner-text">
+                        {{ \App\Models\PageContent::getContent('about', 'hero', 'mobile_description', 'Premium transport services that blend luxury, safety, and innovation for an elevated travel experience.') }}
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -763,11 +824,11 @@
     <!-- Section 4 - Updated with new container design -->
     <section class="section-4">
         <div class="section-4-content">
-            <div class="section-4-container">
+            <div class="section-4-container" style="background-image: url('{{ asset(\App\Models\PageContent::getContent('about', 'section4', 'background_desktop', 'assets/section4-desktop.jpg')) }}'); background-size: contain; background-repeat: no-repeat; background-position: center center;">
                 <div class="section-4-content-wrapper">
                     <div class="section-4-text-container">
-                        <p style="font-size: 30px; font-weight: 100 !important;">Apply And Start Reaping The Benefits Of Using Tawasul <br> Limousine For business</p>
-                        <button class="apply-now-btn" onclick="applyNow()">Apply Now  → </button>
+                        <p style="font-size: 30px; font-weight: 100 !important;">{{ \App\Models\PageContent::getContent('about', 'section4', 'title', 'Apply And Start Reaping The Benefits Of Using Tawasul Limousine For business') }}</p>
+                        <button class="apply-now-btn" onclick="applyNow()">{{ \App\Models\PageContent::getContent('about', 'section4', 'button_text', 'Apply Now') }}  → </button>
                     </div>
                 </div>
                 
@@ -775,11 +836,10 @@
                 <div class="section-4-footer">
                     <div class="section-4-footer-left">
                         <div class="section-4-footer-logo">
-                            <img src="{{ asset('assets/logo.png') }}" alt="Travel Logo">
+                            <img src="{{ asset(\App\Models\PageContent::getContent('about', 'section4', 'logo', 'assets/logo.png')) }}" alt="Travel Logo">
                         </div>
                         <div class="section-4-footer-text">
-                            Rating Tawasul Limousine<br>
-                            on Google Play and App Store
+                            {{ \App\Models\PageContent::getContent('about', 'section4', 'footer_text', 'Rating Tawasul Limousine on Google Play and App Store') }}
                         </div>
                     </div>
                 </div>
@@ -788,9 +848,9 @@
     </section>
     
     <!-- FAQ Section -->
-    <section class="faq-section section">
+    <section class="faq-section section" style="--faq-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('about', 'faq', 'background_desktop', 'assets/faq-desktop.jpg')) }}'); --faq-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('about', 'faq', 'background_mobile', 'assets/faq-mobile.jpg')) }}');">
         <div class="section-content">
-            <h2>Frequently Asked Questions</h2>
+            <h2>{{ \App\Models\PageContent::getContent('about', 'faq', 'title', 'Frequently Asked Questions') }}</h2>
             
             <div class="faq-container">
                 <div class="faq-column">
@@ -883,3 +943,43 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+<script>
+// Make About mobile banner responsive to image aspect ratio
+function adjustAboutMobileBannerHeight() {
+    if (window.innerWidth <= 768) {
+        const bannerSection = document.querySelector('.about-banner-section');
+        const mobileImageUrl = getComputedStyle(bannerSection, '::before').backgroundImage;
+        
+        if (mobileImageUrl && mobileImageUrl !== 'none') {
+            // Extract URL from CSS background-image property
+            const url = mobileImageUrl.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+            
+            // Create a temporary image to get dimensions
+            const img = new Image();
+            img.onload = function() {
+                const aspectRatio = this.height / this.width;
+                const containerWidth = bannerSection.offsetWidth;
+                const calculatedHeight = containerWidth * aspectRatio;
+                
+                // Set minimum height but allow image to determine the actual height
+                const minHeight = Math.max(calculatedHeight, window.innerHeight * 0.4);
+                bannerSection.style.height = minHeight + 'px';
+                
+                // Update container height
+                const container = bannerSection.querySelector('.about-banner-container');
+                if (container) {
+                    container.style.minHeight = minHeight + 'px';
+                }
+            };
+            img.src = url;
+        }
+    }
+}
+
+// Run on page load and window resize
+document.addEventListener('DOMContentLoaded', adjustAboutMobileBannerHeight);
+window.addEventListener('resize', adjustAboutMobileBannerHeight);
+</script>
+@endpush

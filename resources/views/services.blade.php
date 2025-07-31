@@ -28,7 +28,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: url('{{ asset(\App\Models\PageContent::getContent('services', 'banner', 'background_image', 'assets/services-banner.jpg')) }}') no-repeat center center;
+        background: var(--banner-bg-desktop) no-repeat center center;
         background-size: cover;
         background-attachment: scroll;
         z-index: 1;
@@ -107,7 +107,8 @@
     .looping-text-content span {
         display: inline-flex;
         align-items: center;
-        margin-right: 2rem;
+        margin-right: 1rem;
+        margin-left: 1rem;
     }
     
     .looping-icon {
@@ -126,27 +127,70 @@
         }
     }
     
+    /* Responsive Content Display */
+    .desktop-content {
+        display: block !important;
+    }
+    
+    .mobile-content {
+        display: none !important;
+    }
+    
     /* Mobile Responsive */
     @media (max-width: 768px) {
         .services-banner-section {
-            padding-bottom: 75%; /* Adjust for mobile aspect ratio */
+            height: auto;
+            padding-bottom: 0;
+            position: relative;
+            min-height: 50vh;
+        }
+        
+        .desktop-content {
+            display: none !important;
+        }
+        
+        .mobile-content {
+            display: block !important;
         }
         
         .services-banner-section::before {
-            background-size: cover;
+            background: var(--banner-bg-mobile) no-repeat center center;
+            background-size: contain;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         
         .services-banner-container {
-            padding: 6rem 1rem 4rem 1rem;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            min-height: 50vh;
+            padding: 4rem 1rem 2rem 1rem;
+            z-index: 3;
+        }
+        
+        .services-banner-content {
+            text-align: center;
+            max-width: 90%;
+            padding: 0;
         }
         
         .services-banner-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
         }
         
         .services-banner-text {
-            font-size: 1rem;
+            font-size: 0.9rem;
+            color: #e0e0e0;
+            line-height: 1.5;
         }
         
         .looping-text-content {
@@ -154,22 +198,30 @@
         }
         
         .looping-icon {
+            height: 12px;
             width: auto;
-            height: auto;
         }
     }
     
     @media (max-width: 480px) {
         .services-banner-container {
-            padding: 0 0.75rem;
+            padding: 8rem 0.75rem 1.5rem 0.75rem;
+            min-height: 45vh;
+        }
+        
+        .services-banner-content {
+            padding: 0;
+            max-width: 95%;
         }
         
         .services-banner-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
         }
         
         .services-banner-text {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
         
         .looping-text-content {
@@ -197,7 +249,8 @@
         width: 100%;
         height: auto;
         border-radius: 10px;
-        object-fit: cover;
+        object-fit: contain;
+        display: block;
     }
     
     .services-selection-content {
@@ -234,9 +287,6 @@
         position: relative;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         transition: all 0.3s ease;
-        background-size: 50px 50px;
-        background-repeat: no-repeat;
-        background-position: calc(100% - 15px) 15px;
         min-height: 120px;
     }
     
@@ -245,16 +295,34 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
     
-    .service-box.luxury-selection {
-        background-image: url('{{ asset('assets/luxury-selection-icon.jpg') }}'), linear-gradient(to bottom, #F3F3F3, #F3F3F3);
+    .service-box.luxury-selection::after {
+        content: '01';
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 44px;
+        font-weight: 100;
+        color: #b6b6b6;
     }
     
-    .service-box.day-to-day {
-        background-image: url('{{ asset('assets/day-to-day-icon.jpg') }}'), linear-gradient(to bottom, #F3F3F3, #F3F3F3);
+    .service-box.day-to-day::after {
+        content: '02';
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 44px;
+        font-weight: 100;
+        color: #b6b6b6;
     }
     
-    .service-box.exclusive-request {
-        background-image: url('{{ asset('assets/exclusive-request-icon.jpg') }}'), linear-gradient(to bottom, #F3F3F3, #F3F3F3);
+    .service-box.exclusive-request::after {
+        content: '03';
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 44px;
+        font-weight: 100;
+        color: #b6b6b6;
     }
     
     .service-box-content {
@@ -291,6 +359,15 @@
             padding: 0 0.75rem;
         }
         
+        .services-selection-image-container {
+            order: 1; /* Image displays first (left/top) */
+        }
+        
+        .services-selection-content {
+            order: 2;
+            padding-left: 0rem;
+        }
+        
         .services-selection-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
@@ -321,6 +398,10 @@
         
         .service-box-text {
             font-size: 0.85rem;
+        }
+        
+        .service-box-title br {
+            display: none;
         }
     }
     
@@ -362,7 +443,7 @@
         width: 100%;
         height: 0;
         padding-bottom: 36%;
-        background: url('{{ asset('assets/services-section3-bg.jpg') }}') no-repeat center center;
+        background: var(--fleet-bg-desktop) no-repeat center center;
         background-size: contain;
         background-attachment: scroll;
         color: white;
@@ -433,37 +514,75 @@
     /* Mobile Fleet Excellence Section */
     @media (max-width: 768px) {
         .fleet-excellence-section {
-            padding: 4rem 0;
+            height: auto;
+            padding: 0;
+            background: var(--fleet-bg-mobile) no-repeat center center;
+            background-size: contain;
+            background-position: center center;
+            min-height: 50vh;
+            position: relative;
         }
         
         .fleet-excellence-container {
-            grid-template-columns: 1fr;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             gap: 2rem;
-            padding: 0 0.75rem;
+            padding: 4rem 1rem 2rem 1rem;
             text-align: center;
+            max-width: 100%;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .fleet-excellence-left {
+            justify-content: center;
+        }
+        
+        .fleet-excellence-right {
+            justify-content: center;
         }
         
         .fleet-excellence-title {
             font-size: 2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
         }
         
         .fleet-excellence-text {
-            font-size: 0.9rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            max-width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0;
         }
     }
     
     @media (max-width: 480px) {
+        .fleet-excellence-section {
+            padding: 3rem 0;
+        }
+        
         .fleet-excellence-container {
-            padding: 0 0.5rem;
+            padding: 1rem 0.55rem;
+            gap: 1.5rem;
         }
         
         .fleet-excellence-title {
             font-size: 1.8rem;
+            margin-bottom: 1.5rem;
         }
         
         .fleet-excellence-text {
             font-size: 0.85rem;
+            line-height: 1.5;
         }
     }
     
@@ -505,7 +624,8 @@
         width: 100%;
         height: auto;
         border-radius: 10px;
-        object-fit: cover;
+        object-fit: contain;
+        display: block;
     }
     
     .luxury-vehicles-right {
@@ -572,19 +692,27 @@
             padding: 0 0.75rem;
         }
         
+        .luxury-vehicles-left {
+            order: 1; /* Image displays first (left/top) */
+            align-items: center;
+        }
+        
+        .luxury-vehicles-right {
+            order: 2;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
         .luxury-vehicles-title {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             text-align: center;
         }
         
-        .luxury-vehicles-left {
-            align-items: center;
-        }
-        
         .vehicle-number {
-            font-size: 0.75rem;
-            margin-right: 1.2rem;
+            font-size: 0.9rem;
+            margin-right: 2rem;
+            min-width: 30px;
         }
         
         .vehicle-name {
@@ -700,6 +828,20 @@
             grid-template-columns: 1fr;
             gap: 3rem;
             padding: 0 0.75rem;
+            text-align: center;
+        }
+        
+        .our-services-left {
+            order: 1;
+        }
+        
+        .our-services-right {
+            order: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
         }
         
         .our-services-title {
@@ -711,6 +853,8 @@
         .services-lists-container {
             grid-template-columns: 1fr;
             gap: 2rem;
+            max-width: 400px;
+            margin: 0 auto;
         }
         
         .service-name {
@@ -829,6 +973,20 @@
             grid-template-columns: 1fr;
             gap: 3rem;
             padding: 0 0.75rem;
+            text-align: center;
+        }
+        
+        .our-technology-left {
+            order: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+        
+        .our-technology-right {
+            order: 1;
         }
         
         .our-technology-title {
@@ -840,6 +998,8 @@
         .technology-lists-container {
             grid-template-columns: 1fr;
             gap: 2rem;
+            max-width: 400px;
+            margin: 0 auto;
         }
         
         .technology-name {
@@ -875,13 +1035,24 @@
 
 @section('content')
     <!-- Section One: Banner -->
-    <section class="services-banner-section">
+    <section class="services-banner-section" style="--banner-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('services', 'banner', 'background_desktop', 'assets/services-banner.jpg')) }}'); --banner-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('services', 'banner', 'background_mobile', 'assets/services-banner-mobile.jpg')) }}');">
         <div class="services-banner-container">
             <div class="services-banner-content">
-                <h1 class="services-banner-title">{{ \App\Models\PageContent::getContent('services', 'banner', 'title', 'Setting a new standard in premium experience.') }}</h1>
-                <p class="services-banner-text">
-                    {{ \App\Models\PageContent::getContent('services', 'banner', 'description', 'Tawasul Limousine presents a renewed range of vehicles designed to suit every occasion, from executive travel to everyday convenience. Each vehicle combines luxury, comfort, and intelligent technology to deliver a seamless, elevated experience that meets the highest standards of modern mobility.') }}
-                </p>
+                <!-- Desktop Content -->
+                <div class="desktop-content d-none d-md-block">
+                    <h1 class="services-banner-title">{{ \App\Models\PageContent::getContent('services', 'banner', 'title', 'Setting a new standard in premium experience.') }}</h1>
+                    <p class="services-banner-text">
+                        {{ \App\Models\PageContent::getContent('services', 'banner', 'description', 'Tawasul Limousine presents a renewed range of vehicles designed to suit every occasion, from executive travel to everyday convenience. Each vehicle combines luxury, comfort, and intelligent technology to deliver a seamless, elevated experience that meets the highest standards of modern mobility.') }}
+                    </p>
+                </div>
+                
+                <!-- Mobile Content -->
+                <div class="mobile-content d-md-none">
+                    <h1 class="services-banner-title">{{ \App\Models\PageContent::getContent('services', 'banner', 'mobile_title', 'Premium Experience') }}</h1>
+                    <p class="services-banner-text">
+                        {{ \App\Models\PageContent::getContent('services', 'banner', 'mobile_description', 'Luxury vehicles designed for every occasion, combining comfort and intelligent technology for an elevated travel experience.') }}
+                    </p>
+                </div>
             </div>
         </div>
     </section>
@@ -950,7 +1121,7 @@
     </section>
     
     <!-- Section Three: Fleet Excellence -->
-    <section class="fleet-excellence-section">
+    <section class="fleet-excellence-section" style="--fleet-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('services', 'fleet', 'background_desktop', 'assets/services-section3-bg.jpg')) }}'); --fleet-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('services', 'fleet', 'background_mobile', 'assets/services-section3-bg-mobile.jpg')) }}');">
         <div class="fleet-excellence-container">
             <div class="fleet-excellence-left">
                 <h2 class="fleet-excellence-title">{{ \App\Models\PageContent::getContent('services', 'fleet', 'title', 'Fleet of Excellence') }}</h2>
@@ -1105,11 +1276,11 @@
     <!-- Section Seven: Apply for Business (Same as Home Section 4) -->
     <section class="section-4">
         <div class="section-4-content">
-            <div class="section-4-container">
+            <div class="section-4-container" style="--section4-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('services', 'section4', 'background_desktop', 'assets/section4-desktop.jpg')) }}'); --section4-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('services', 'section4', 'background_mobile', 'assets/section4-mobile.jpg')) }}');">
                 <div class="section-4-content-wrapper">
                     <div class="section-4-text-container">
-                        <p style="font-size: 30px; font-weight: 100 !important;">Apply And Start Reaping The Benefits Of Using Tawasul <br> Limousine For business</p>
-                        <button class="apply-now-btn" onclick="applyNow()">Apply Now  → </button>
+                        <p style="font-size: 30px; font-weight: 100 !important;">{{ \App\Models\PageContent::getContent('services', 'section4', 'title', 'Apply And Start Reaping The Benefits Of Using Tawasul Limousine For business') }}</p>
+                        <button class="apply-now-btn" onclick="applyNow()">{{ \App\Models\PageContent::getContent('services', 'section4', 'button_text', 'Apply Now') }}  → </button>
                     </div>
                 </div>
                 
@@ -1117,11 +1288,10 @@
                 <div class="section-4-footer">
                     <div class="section-4-footer-left">
                         <div class="section-4-footer-logo">
-                            <img src="{{ asset('assets/logo.png') }}" alt="Travel Logo">
+                            <img src="{{ asset(\App\Models\PageContent::getContent('services', 'section4', 'logo', 'assets/logo.png')) }}" alt="Travel Logo">
                         </div>
                         <div class="section-4-footer-text">
-                            Rating Tawasul Limousine<br>
-                            on Google Play and App Store
+                            {{ \App\Models\PageContent::getContent('services', 'section4', 'footer_text', 'Rating Tawasul Limousine on Google Play and App Store') }}
                         </div>
                     </div>
                 </div>
@@ -1130,9 +1300,9 @@
     </section>
 
     <!-- Section Eight: FAQ (Same as Home Section 5) -->
-    <section class="faq-section section">
+    <section class="faq-section section" style="--faq-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('services', 'faq', 'background_desktop', 'assets/faq-desktop.jpg')) }}'); --faq-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('services', 'faq', 'background_mobile', 'assets/faq-mobile.jpg')) }}');">
         <div class="section-content">
-            <h2>Frequently Asked Questions</h2>
+            <h2>{{ \App\Models\PageContent::getContent('services', 'faq', 'title', 'Frequently Asked Questions') }}</h2>
             
             <div class="faq-container">
                 <div class="faq-column">
@@ -1225,3 +1395,76 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+<script>
+// Make mobile banner responsive to image aspect ratio
+function adjustMobileBannerHeight() {
+    if (window.innerWidth <= 768) {
+        const bannerSection = document.querySelector('.services-banner-section');
+        const mobileImageUrl = getComputedStyle(bannerSection, '::before').backgroundImage;
+        
+        if (mobileImageUrl && mobileImageUrl !== 'none') {
+            // Extract URL from CSS background-image property
+            const url = mobileImageUrl.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+            
+            // Create a temporary image to get dimensions
+            const img = new Image();
+            img.onload = function() {
+                const aspectRatio = this.height / this.width;
+                const containerWidth = bannerSection.offsetWidth;
+                const calculatedHeight = containerWidth * aspectRatio;
+                
+                // Set minimum height but allow image to determine the actual height
+                const minHeight = Math.max(calculatedHeight, window.innerHeight * 0.4);
+                bannerSection.style.height = minHeight + 'px';
+                
+                // Update container height
+                const container = bannerSection.querySelector('.services-banner-container');
+                if (container) {
+                    container.style.minHeight = minHeight + 'px';
+                }
+            };
+            img.src = url;
+        }
+    }
+}
+
+// Make mobile Fleet section responsive to image aspect ratio
+function adjustMobileFleetHeight() {
+    if (window.innerWidth <= 768) {
+        const fleetSection = document.querySelector('.fleet-excellence-section');
+        const mobileImageUrl = getComputedStyle(fleetSection).backgroundImage;
+        
+        if (mobileImageUrl && mobileImageUrl !== 'none') {
+            // Extract URL from CSS background-image property
+            const url = mobileImageUrl.replace(/^url\(['"]?/, '').replace(/['"]?\)$/, '');
+            
+            // Create a temporary image to get dimensions
+            const img = new Image();
+            img.onload = function() {
+                const aspectRatio = this.height / this.width;
+                const containerWidth = fleetSection.offsetWidth;
+                const calculatedHeight = containerWidth * aspectRatio;
+                
+                // Set height based on image dimensions
+                const minHeight = Math.max(calculatedHeight, window.innerHeight * 0.4);
+                fleetSection.style.height = minHeight + 'px';
+                fleetSection.style.minHeight = minHeight + 'px';
+            };
+            img.src = url;
+        }
+    }
+}
+
+// Run on page load and window resize
+document.addEventListener('DOMContentLoaded', function() {
+    adjustMobileBannerHeight();
+    adjustMobileFleetHeight();
+});
+window.addEventListener('resize', function() {
+    adjustMobileBannerHeight();
+    adjustMobileFleetHeight();
+});
+</script>
+@endpush

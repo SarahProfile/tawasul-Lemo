@@ -52,6 +52,15 @@ class PageContentController extends Controller
                     
                     // Update database with new image path
                     PageContent::setContent($page, $section, $key, 'assets/' . $filename, 'image');
+                    
+                    // Special handling for banner background images - sync to desktop/mobile fields
+                    if ($section === 'banner' && $key === 'background_image') {
+                        PageContent::setContent($page, $section, 'background_desktop', 'assets/' . $filename, 'image');
+                        // Only update mobile if it doesn't have a specific mobile image
+                        if (!PageContent::where('page', $page)->where('section', $section)->where('key', 'background_mobile')->whereNotIn('value', ['assets/services-banner-mobile.jpg', 'assets/about-banner-mobile.jpg', 'assets/hero-mobile-banner.jpg'])->exists()) {
+                            PageContent::setContent($page, $section, 'background_mobile', 'assets/' . $filename, 'image');
+                        }
+                    }
                 }
             }
         }

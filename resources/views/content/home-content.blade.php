@@ -1,5 +1,5 @@
         <!-- Hero Section -->
-        <section id="home" class="hero-section">
+        <section id="home" class="hero-section" style="--mobile-banner: url('{{ asset(\App\Models\PageContent::getContent('home', 'hero', 'mobile_banner', 'assets/hero-mobile-banner.jpg')) }}');">
             <div class="hero-container">
                 <div class="hero-content">
                     <h1 class="hero-title">{{ \App\Models\PageContent::getContent('home', 'hero', 'title', 'Book. Ride. Arrive in Luxury.') }}</h1>
@@ -33,13 +33,13 @@
                         <div class="location-row">
                             <div class="form-group">
                                 <label for="pickup">Pickup Location</label>
-                                <input type="text" id="pickup" name="pickup_location" placeholder="Enter pickup location" readonly onclick="openMapSelector('pickup')" required>
+                                <input type="text" id="pickup" name="pickup_location" placeholder="Getting current location..." onclick="handleLocationInput('pickup')" required>
                                 <input type="hidden" id="pickup_lat" name="pickup_lat">
                                 <input type="hidden" id="pickup_lng" name="pickup_lng">
                             </div>
                             <div class="form-group">
                                 <label for="dropoff">Drop-off Location</label>
-                                <input type="text" id="dropoff" name="dropoff_location" placeholder="Enter drop-off location" readonly onclick="openMapSelector('dropoff')" required>
+                                <input type="text" id="dropoff" name="dropoff_location" placeholder="Click to select on map or type address" onclick="handleLocationInput('dropoff')" required>
                                 <input type="hidden" id="dropoff_lat" name="dropoff_lat">
                                 <input type="hidden" id="dropoff_lng" name="dropoff_lng">
                             </div>
@@ -90,7 +90,7 @@
         </section>
 
         <!-- Benefits Section with Background Image -->
-        <section class="benefits-section">
+        <section class="benefits-section" style="--benefits-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('home', 'benefits', 'background_desktop', 'assets/hero-desktop.jpg')) }}'); --benefits-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('home', 'benefits', 'background_mobile', 'assets/benefits-mobile.jpg')) }}');">
             <div class="benefits-container">
                 <!-- Title at the top -->
                 <div class="benefits-title">
@@ -160,7 +160,7 @@
         <!-- Section 4 - Updated with new container design -->
         <section class="section-4">
             <div class="section-4-content">
-                <div class="section-4-container">
+                <div class="section-4-container" style="--section4-bg-desktop: url('{{ asset(\App\Models\PageContent::getContent('home', 'section4', 'background_desktop', 'assets/section4-desktop.jpg')) }}'); --section4-bg-mobile: url('{{ asset(\App\Models\PageContent::getContent('home', 'section4', 'background_mobile', 'assets/section4-mobile.jpg')) }}');">
                     <div class="section-4-content-wrapper">
                         <div class="section-4-text-container">
                             <p style="font-size: 30px; font-weight: 100 !important;">{{ \App\Models\PageContent::getContent('home', 'section4', 'title', 'Apply And Start Reaping The Benefits Of Using Tawasul Limousine For business') }}</p>

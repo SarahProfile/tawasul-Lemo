@@ -86,38 +86,49 @@
                         </div>
                     </div>
                     
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="latitude" class="form-label">Latitude</label>
-                                <input type="number" step="0.00000001" class="form-control @error('latitude') is-invalid @enderror" 
-                                       id="latitude" name="latitude" value="{{ old('latitude') }}" placeholder="25.2048" required>
-                                @error('latitude')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="longitude" class="form-label">Longitude</label>
-                                <input type="number" step="0.00000001" class="form-control @error('longitude') is-invalid @enderror" 
-                                       id="longitude" name="longitude" value="{{ old('longitude') }}" placeholder="55.2708" required>
-                                @error('longitude')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
                     
                     <div class="mb-3">
-                        <label for="map_embed_url" class="form-label">Google Maps Embed URL</label>
-                        <input type="url" class="form-control @error('map_embed_url') is-invalid @enderror" 
-                               id="map_embed_url" name="map_embed_url" value="{{ old('map_embed_url') }}" 
-                               placeholder="https://www.google.com/maps/embed?pb=..." required>
+                        <label for="map_embed_url" class="form-label">
+                            <i class="fas fa-map-marked-alt me-1"></i> Google Maps Embed URL
+                        </label>
+                        <textarea class="form-control @error('map_embed_url') is-invalid @enderror" 
+                                  id="map_embed_url" name="map_embed_url" rows="3" 
+                                  placeholder="Paste the Google Maps embed URL here..." required>{{ old('map_embed_url') }}</textarea>
                         @error('map_embed_url')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                        <small class="text-muted">Go to Google Maps, search for your location, click Share → Embed a map, and copy the URL</small>
+                        <div class="form-text">
+                            <strong>📍 How to get Google Maps embed URL:</strong><br>
+                            1. Go to <a href="https://maps.google.com" target="_blank">Google Maps</a><br>
+                            2. Search for your location<br>
+                            3. Click <strong>"Share"</strong> button<br>
+                            4. Select <strong>"Embed a map"</strong> tab<br>
+                            5. Copy the entire URL from the src attribute<br>
+                            <small class="text-info">💡 Tip: The URL should start with "https://www.google.com/maps/embed"</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Map Preview Section -->
+                    <div class="mb-3">
+                        <label class="form-label">
+                            <i class="fas fa-eye me-1"></i> Map Preview
+                        </label>
+                        <div class="border rounded p-2" style="height: 300px;">
+                            <div id="map_preview_placeholder" class="d-flex align-items-center justify-content-center h-100 bg-light text-muted">
+                                <div class="text-center">
+                                    <i class="fas fa-map-marker-alt fa-3x mb-2"></i>
+                                    <p>Map preview will appear here after you enter the URL</p>
+                                </div>
+                            </div>
+                            <iframe id="map_preview" 
+                                    width="100%" 
+                                    height="100%" 
+                                    style="border:0; display: none;" 
+                                    allowfullscreen="" 
+                                    loading="lazy">
+                            </iframe>
+                        </div>
+                        <small class="text-muted">This is how the map will appear on your contact page</small>
                     </div>
                     
                     <div class="row">
@@ -163,11 +174,6 @@
             </div>
             <div class="card-body">
                 <small class="text-muted">
-                    <strong>Finding Coordinates:</strong><br>
-                    1. Go to Google Maps<br>
-                    2. Right-click on your location<br>
-                    3. Copy the coordinates (first number is latitude, second is longitude)<br><br>
-                    
                     <strong>Getting Embed URL:</strong><br>
                     1. Search your location on Google Maps<br>
                     2. Click "Share" button<br>
@@ -178,4 +184,39 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const mapUrlInput = document.getElementById('map_embed_url');
+    const mapPreview = document.getElementById('map_preview');
+    const mapPlaceholder = document.getElementById('map_preview_placeholder');
+    
+    mapUrlInput.addEventListener('input', function() {
+        const url = this.value.trim();
+        if (url && url.includes('maps.google.com/maps/embed')) {
+            mapPreview.src = url;
+            mapPreview.style.display = 'block';
+            mapPlaceholder.style.display = 'none';
+        } else {
+            mapPreview.style.display = 'none';
+            mapPlaceholder.style.display = 'flex';
+        }
+    });
+    
+    // Auto-format map URL if user pastes iframe code
+    mapUrlInput.addEventListener('paste', function(e) {
+        setTimeout(() => {
+            let content = this.value;
+            // Extract URL from iframe if user pasted full iframe code
+            const srcMatch = content.match(/src="([^"]*)/);
+            if (srcMatch) {
+                this.value = srcMatch[1];
+                mapPreview.src = srcMatch[1];
+                mapPreview.style.display = 'block';
+                mapPlaceholder.style.display = 'none';
+            }
+        }, 100);
+    });
+});
+</script>
 @endsection
