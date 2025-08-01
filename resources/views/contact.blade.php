@@ -394,7 +394,7 @@
                         
                         <div class="form-field">
                             <label for="message">Message</label>
-                            <textarea id="message" name="message" placeholder="Tell Us About Your Project" required></textarea>
+                            <textarea id="message" name="message" placeholder="Tell Us" required></textarea>
                         </div>
                         
                         <button type="submit" class="submit-btn">Send Message</button>

@@ -60,7 +60,7 @@
     }
     
     .services-banner-content {
-        max-width: 600px;
+        max-width: 900px;
         color: white;
         z-index: 2;
     }
@@ -561,7 +561,7 @@
             max-width: 100%;
             margin: 0 auto;
             text-align: center;
-            padding: 0;
+            padding: 10px;
         }
     }
     

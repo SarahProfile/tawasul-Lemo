@@ -201,7 +201,7 @@
         }
         
         .apply-btn {
-            align-self: center;
+            align-self: flex-start;
         }
     }
     
