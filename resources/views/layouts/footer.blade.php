@@ -22,11 +22,7 @@
                             <li><a href="#contact">Contact Us</a></li>
                         </ul>
                     </div>
-                       <div>
-                        
-                     <p style="color: #B6B6B6;font-size: 12px;">Book Your Journey Today</p>
-                   <p style="color: #B6B6B6;font-size: 12px;"> Booking:<a href="tel:600 55 95 95" style="color: #B6B6B6;font-size: 12px;"> 600 55 95 95</a></p>
-                    </div>
+                    
                     <div class="footer-newsletter">
 
                         <div class="newsletter-form">

@@ -45,6 +45,16 @@
                             </div>
                         </div>
 
+                        <div class="contact-row">
+                            <div class="form-group">
+                                <label for="mobile">Mobile Number</label>
+                                <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                            </div>
+                        </div>
                         
                         <div class="form-bottom">
                             <button type="submit" class="see-prices-btn" id="submitBookingBtn">Book Now</button>

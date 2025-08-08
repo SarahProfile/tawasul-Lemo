@@ -22,6 +22,8 @@ class BookingController extends Controller
             'dropoff_location' => 'required|string|max:255',
             'dropoff_lat' => 'nullable|numeric',
             'dropoff_lng' => 'nullable|numeric',
+            'mobile' => 'required|string|max:20',
+            'email' => 'required|email|max:255',
         ]);
 
         // Create booking
@@ -36,8 +38,8 @@ class BookingController extends Controller
             'dropoff_lat' => $request->dropoff_lat,
             'dropoff_lng' => $request->dropoff_lng,
             'customer_name' => Auth::user()->name ?? 'Guest User',
-            'customer_email' => Auth::user()->email ?? 'guest@tawasullimo.ae',
-            'customer_phone' => null,
+            'customer_email' => $request->email,
+            'customer_phone' => $request->mobile,
             'user_id' => Auth::id(),
         ]);
 

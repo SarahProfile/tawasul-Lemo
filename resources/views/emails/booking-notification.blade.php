@@ -92,12 +92,10 @@
                 <span class="value">{{ $booking->customer_email }}</span>
             </div>
 
-            @if($booking->customer_phone)
             <div class="detail-row">
-                <span class="label">Phone:</span>
-                <span class="value">{{ $booking->customer_phone }}</span>
+                <span class="label">Mobile:</span>
+                <span class="value">{{ $booking->customer_phone ?: 'N/A' }}</span>
             </div>
-            @endif
 
             <div class="detail-row">
                 <span class="label">City:</span>

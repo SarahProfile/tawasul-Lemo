@@ -57,7 +57,7 @@
         font-size: clamp(3rem, 6vw, 4rem);
         font-weight: 300;
         color: #000000;
-        margin-bottom: 3rem;
+        margin-bottom: 2rem;
         background: #FFFFFF;
         padding: 1.5rem 2rem;
         border-radius: 10px;
@@ -68,6 +68,66 @@
         line-height: 1.2;
     }
     
+    /* Main Contact Info Styles */
+    .main-contact-info {
+        background: #FFFFFF;
+        border-radius: 15px;
+        padding: 2.5rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(83, 84, 86, 0.1);
+    }
+    
+    .contact-info-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        align-items: start;
+    }
+    
+    .contact-info-item {
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 4px solid #535456;
+    }
+    
+    .contact-info-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(83, 84, 86, 0.15);
+    }
+    
+    .contact-details h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #000000;
+        margin: 0 0 0.4rem 0;
+    }
+    
+    .contact-details p {
+        font-size: 0.95rem;
+        margin: 0 0 0.2rem 0;
+    }
+    
+    .contact-details a {
+        color: #535456;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+    
+    .contact-details a:hover {
+        color: #404142;
+        text-decoration: underline;
+    }
+    
+    .contact-details span {
+        font-size: 0.8rem;
+        color: #666666;
+        font-style: italic;
+    }
+    
     .contact-content {
         display: flex;
         flex-direction: column;
@@ -75,16 +135,21 @@
     }
     
     .map-container {
-        width: 100%;
-        height: 600px;
+        width: 100% !important;
+        height: 600px !important;
+        min-height: 600px !important;
         border-radius: 5px;
         overflow: hidden;
+        display: block !important;
+        position: relative;
     }
     
     .map-container iframe {
-        width: 100%;
-        height: 100%;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 600px !important;
         border: none;
+        display: block !important;
     }
     
     .contact-form-container {
@@ -188,8 +253,33 @@
         
         .get-in-touch-title {
             font-size: 1.8rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             padding: 0.8rem 1.5rem;
+        }
+        
+        .main-contact-info {
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            margin-left: -0.25rem;
+            margin-right: -0.25rem;
+        }
+        
+        .contact-info-grid {
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+        
+        .contact-info-item {
+            padding: 0.8rem;
+        }
+        
+        
+        .contact-details h3 {
+            font-size: 0.95rem;
+        }
+        
+        .contact-details p {
+            font-size: 0.9rem;
         }
         
         .contact-content {
@@ -197,7 +287,13 @@
         }
         
         .map-container {
-            height: 450px;
+            height: 450px !important;
+            min-height: 450px !important;
+        }
+        
+        .map-container iframe {
+            height: 450px !important;
+            min-height: 450px !important;
         }
         
         .contact-form-container {
@@ -226,7 +322,13 @@
         }
         
         .map-container {
-            height: 350px;
+            height: 350px !important;
+            min-height: 350px !important;
+        }
+        
+        .map-container iframe {
+            height: 350px !important;
+            min-height: 350px !important;
         }
         
         .contact-form-container {
@@ -267,7 +369,7 @@
     }
     
     .location-icon {
-        color: #FF750F;
+        color: #535456;
         font-size: 1.2rem;
         margin-top: 0.2rem;
         flex-shrink: 0;
@@ -315,6 +417,35 @@
         <div class="get-in-touch-container">
             <h1 class="get-in-touch-title">{!! nl2br(\App\Models\PageContent::getContent('contact', 'get_in_touch', 'title', "Get in\ntouch")) !!}</h1>
             
+            <!-- Contact Information Section -->
+            <div class="main-contact-info">
+                <div class="contact-info-grid">
+                    <div class="contact-info-item">
+                        <div class="contact-details">
+                            <h3>Call Center</h3>
+                            <p><a href="tel:600559595">600 55 95 95</a></p>
+                            <span>Available 24/7</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-details">
+                            <h3>Booking</h3>
+                            <p><a href="mailto:booking@tawasullimo.ae">booking@tawasullimo.ae</a></p>
+                            <span>For ride reservations</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-details">
+                            <h3>Support</h3>
+                            <p><a href="mailto:support@tawasullimo.ae">support@tawasullimo.ae</a></p>
+                            <span>For assistance & inquiries</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <div class="contact-content">
                 <!-- Map Container -->
                 <div class="map-container">
@@ -334,39 +465,26 @@
                     @endif
                 </div>
                 
-                <!-- Location Information -->
+                <!-- Main Office Information -->
                 @if($contactLocation)
                 <div class="location-info-container">
-                    <h3 class="location-info-title">{{ $contactLocation->name }}</h3>
+                    <h3 class="location-info-title" style="text-align: left;">Main Office</h3>
                     <div class="location-details">
                         <div class="location-item">
                             <i class="fas fa-map-marker-alt location-icon"></i>
                             <div class="location-content">
-                                <h4>Address</h4>
-                                <p>{{ $contactLocation->address }}<br>{{ $contactLocation->city }}, {{ $contactLocation->country }}</p>
+                                <h4>Abu Dhabi Office</h4>
+                                <p><a href="https://maps.app.goo.gl/FppjC5G6raZ3UD4d7" target="_blank" style="color: #535456; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#404142'" onmouseout="this.style.color='#535456'">📍 View Location on Google Maps</a></p>
                             </div>
                         </div>
                         
-                        @if($contactLocation->phone)
                         <div class="location-item">
-                            <i class="fas fa-phone location-icon"></i>
+                            <i class="fas fa-building location-icon"></i>
                             <div class="location-content">
-                                <h4>Phone</h4>
-                                <p><a href="tel:{{ $contactLocation->phone }}" style="color: #666666; text-decoration: none;">{{ $contactLocation->phone }}</a></p>
+                                <h4>Dubai Office</h4>
+                                <p style="color: #666666;">Under process</p>
                             </div>
                         </div>
-                        @endif
-                        
-                        @if($contactLocation->email)
-                        <div class="location-item">
-                            <i class="fas fa-envelope location-icon"></i>
-                            <div class="location-content">
-                                <h4>Email</h4>
-                                <p><a href="mailto:{{ $contactLocation->email }}" style="color: #666666; text-decoration: none;">{{ $contactLocation->email }}</a></p>
-                            </div>
-                        </div>
-                        @endif
-                        
                     </div>
                 </div>
                 @endif
@@ -443,7 +561,7 @@
                             <span>How can I book a ride with Tawasul Limo?</span>
                         </div>
                         <div class="faq-answer">
-                            <p>You can book your ride by calling our call center 600 55 95 95 or by sending your details to support@tawasullimo.ae.</p>
+                            <p>You can book your ride by calling our call center 600 55 95 95 or by emailing us at booking@tawasullimo.ae. For general inquiries, contact support@tawasullimo.ae.</p>
                         </div>
                     </div>
 

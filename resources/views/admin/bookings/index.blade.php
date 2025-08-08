@@ -34,7 +34,10 @@
                             <td>
                                 {{ $booking->customer_name ?: ($booking->user ? $booking->user->name : 'N/A') }}
                                 @if($booking->customer_email)
-                                    <br><small class="text-muted">{{ $booking->customer_email }}</small>
+                                    <br><small class="text-muted">📧 {{ $booking->customer_email }}</small>
+                                @endif
+                                @if($booking->customer_phone)
+                                    <br><small class="text-muted">📱 {{ $booking->customer_phone }}</small>
                                 @endif
                             </td>
                             <td>{{ $booking->date->format('M d, Y') }}</td>
