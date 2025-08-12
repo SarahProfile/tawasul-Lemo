@@ -39,6 +39,16 @@ Route::post('/register', [RegisterController::class, 'register']);
 // Booking Routes
 Route::post('/booking', [BookingController::class, 'store'])->name('booking.store');
 
+// Test endpoint for debugging
+Route::get('/test-booking', function() {
+    return response()->json([
+        'status' => 'OK',
+        'message' => 'Booking endpoint is accessible',
+        'timestamp' => now(),
+        'csrf_token' => csrf_token()
+    ]);
+});
+
 // Contact Routes
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
