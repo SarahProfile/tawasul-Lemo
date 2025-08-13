@@ -33,13 +33,13 @@
                         <div class="location-row">
                             <div class="form-group">
                                 <label for="pickup">Pickup Location</label>
-                                <input type="text" id="pickup" name="pickup_location" placeholder="Getting current location..." onclick="handleLocationInput('pickup')" required>
+                                <input type="text" id="pickup" name="pickup_location" placeholder="Getting current location..." onclick="handleLocationInput('pickup')" required readonly>
                                 <input type="hidden" id="pickup_lat" name="pickup_lat">
                                 <input type="hidden" id="pickup_lng" name="pickup_lng">
                             </div>
                             <div class="form-group">
                                 <label for="dropoff">Drop-off Location</label>
-                                <input type="text" id="dropoff" name="dropoff_location" placeholder="Click to select on map or type address" onclick="handleLocationInput('dropoff')" required>
+                                <input type="text" id="dropoff" name="dropoff_location" placeholder="Click to select on map or type address" onclick="handleLocationInput('dropoff')" required readonly>
                                 <input type="hidden" id="dropoff_lat" name="dropoff_lat">
                                 <input type="hidden" id="dropoff_lng" name="dropoff_lng">
                             </div>
