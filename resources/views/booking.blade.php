@@ -5,7 +5,7 @@
 @section('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Google Maps API -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initMap"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbxuyBHu5VWQGbiZDlpJ1p2qhC7C8pF0g&libraries=places&callback=initMap"></script>
 @endsection
 
 @push('styles')
