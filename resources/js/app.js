@@ -139,22 +139,36 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .then(response => {
+                console.log('Response status:', response.status);
+                console.log('Response headers:', response.headers);
+                
                 if (!response.ok) {
-                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                    return response.text().then(text => {
+                        console.log('Error response text:', text);
+                        throw new Error(`HTTP ${response.status}: ${response.statusText} - ${text}`);
+                    });
                 }
                 return response.json();
             })
             .then(data => {
+                console.log('Response data:', data);
                 if (data.success) {
                     alert(data.message);
                     this.reset(); // Reset form
                     // Clear hidden fields and location inputs
-                    document.getElementById('pickup').value = '';
-                    document.getElementById('dropoff').value = '';
-                    document.getElementById('pickup_lat').value = '';
-                    document.getElementById('pickup_lng').value = '';
-                    document.getElementById('dropoff_lat').value = '';
-                    document.getElementById('dropoff_lng').value = '';
+                    const pickupField = document.getElementById('pickup');
+                    const dropoffField = document.getElementById('dropoff');
+                    const pickupLatField = document.getElementById('pickup_lat');
+                    const pickupLngField = document.getElementById('pickup_lng');
+                    const dropoffLatField = document.getElementById('dropoff_lat');
+                    const dropoffLngField = document.getElementById('dropoff_lng');
+                    
+                    if (pickupField) pickupField.value = '';
+                    if (dropoffField) dropoffField.value = '';
+                    if (pickupLatField) pickupLatField.value = '';
+                    if (pickupLngField) pickupLngField.value = '';
+                    if (dropoffLatField) dropoffLatField.value = '';
+                    if (dropoffLngField) dropoffLngField.value = '';
                 } else {
                     // Handle validation errors
                     if (data.errors) {
@@ -229,23 +243,8 @@ function subscribeNewsletter() {
 
 // New functions for Section 4
 function applyNow() {
-    // Scroll to the hero section to show the booking form from the top
-    const heroSection = document.getElementById('home');
-    if (heroSection) {
-        heroSection.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
-    } else {
-        // Fallback: scroll to booking form if hero section not found
-        const bookingForm = document.getElementById('bookingForm');
-        if (bookingForm) {
-            bookingForm.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    }
+    // Redirect to the booking page
+    window.location.href = '/booking';
 }
 
 function downloadApps() {

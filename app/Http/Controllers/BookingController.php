@@ -10,8 +10,19 @@ use App\Mail\BookingNotification;
 
 class BookingController extends Controller
 {
+    public function create()
+    {
+        return view('booking');
+    }
+    
     public function store(Request $request)
     {
+        // Log incoming request for debugging
+        \Log::info('Booking request received:', [
+            'data' => $request->all(),
+            'headers' => $request->headers->all()
+        ]);
+
         try {
             $request->validate([
                 'city' => 'required|string|max:255',
@@ -27,6 +38,7 @@ class BookingController extends Controller
                 'email' => 'required|email|max:255',
             ]);
         } catch (\Illuminate\Validation\ValidationException $e) {
+            \Log::error('Booking validation failed:', ['errors' => $e->errors()]);
             return response()->json([
                 'success' => false,
                 'message' => 'Please check your form data.',
@@ -35,8 +47,8 @@ class BookingController extends Controller
         }
 
         try {
-            // Create booking
-            $booking = Booking::create([
+            // Log the data being inserted
+            $bookingData = [
                 'city' => $request->city,
                 'date' => $request->date,
                 'time' => $request->time,
@@ -50,7 +62,12 @@ class BookingController extends Controller
                 'customer_email' => $request->email,
                 'customer_phone' => $request->mobile,
                 'user_id' => Auth::id(),
-            ]);
+            ];
+            
+            \Log::info('Attempting to create booking with data:', $bookingData);
+            
+            // Create booking
+            $booking = Booking::create($bookingData);
 
             // Send email notification
             try {
@@ -66,7 +83,11 @@ class BookingController extends Controller
                 'booking_id' => $booking->id
             ]);
         } catch (\Exception $e) {
-            \Log::error('Failed to create booking: ' . $e->getMessage());
+            \Log::error('Failed to create booking: ' . $e->getMessage(), [
+                'exception' => $e,
+                'stack_trace' => $e->getTraceAsString(),
+                'request_data' => $request->all()
+            ]);
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to submit your booking. Please try again or contact support.',
