@@ -482,7 +482,8 @@
                             <i class="fas fa-building location-icon"></i>
                             <div class="location-content">
                                 <h4>Dubai Office</h4>
-                                <p style="color: #666666;">Under process</p>
+                                <p>Dubai Deira – Al Garhoud</p>
+                                <p><a href="https://maps.app.goo.gl/BarbGuNh51242ADL8" target="_blank" style="color: #535456; text-decoration: none; transition: color 0.3s ease;" onmouseover="this.style.color='#404142'" onmouseout="this.style.color='#535456'">📍 View Location on Google Maps</a></p>
                             </div>
                         </div>
                     </div>
@@ -555,9 +556,9 @@
             
             <div class="faq-container">
                 <div class="faq-column">
-                    <div class="faq-item active">
+                    <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span class="faq-icon">×</span>
+                            <span class="faq-icon">+</span>
                             <span>How can I book a ride with Tawasul Limo?</span>
                         </div>
                         <div class="faq-answer">
@@ -704,21 +705,5 @@ function applyNow() {
     // Here you can add functionality to redirect to business application form
 }
 
-function toggleFAQ(element) {
-    const faqItem = element.parentElement;
-    const isActive = faqItem.classList.contains('active');
-    
-    // Close all FAQ items
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-        item.querySelector('.faq-icon').textContent = '+';
-    });
-    
-    // If this item wasn't active, open it
-    if (!isActive) {
-        faqItem.classList.add('active');
-        element.querySelector('.faq-icon').textContent = '×';
-    }
-}
 </script>
 @endpush

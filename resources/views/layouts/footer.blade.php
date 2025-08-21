@@ -41,8 +41,8 @@
                 </div>
                 
                 <nav class="footer-bottom-menu">
-                    <a href="#instagram">Instagram</a>
-                    <a href="#facebook">Facebook</a>
+                    <a href="https://www.instagram.com/tawasullimo/" target="_blank">Instagram</a>
+                    <a href="https://www.facebook.com/profile.php?id=61569536035140" target="_blank">Facebook</a>
                     <a href="#linkedin">LinkedIn</a>
                     <a href="#youtube">YouTube</a>
                 </nav>

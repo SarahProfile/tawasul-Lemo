@@ -67,8 +67,6 @@
                     </tbody>
                 </table>
             </div>
-            
-            {{ $bookings->links() }}
         @else
             <div class="text-center py-5">
                 <i class="fas fa-calendar-times fa-3x text-muted mb-3"></i>
