@@ -158,6 +158,43 @@
         transform: translateX(3px);
     }
     
+    /* No Careers Empty State */
+    .no-careers-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 400px;
+        padding: 3rem 2rem;
+    }
+    
+    .no-careers-content {
+        text-align: center;
+        max-width: 500px;
+        background: #FFFFFF;
+        border-radius: 15px;
+        padding: 3rem 2rem;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    
+    .no-careers-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        display: block;
+    }
+    
+    .no-careers-title {
+        font-size: 1.8rem;
+        font-weight: 500;
+        color: #000000;
+        margin-bottom: 1rem;
+    }
+    
+    .no-careers-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #555555;
+    }
+    
     /* Mobile Responsive */
     @media (max-width: 768px) {
         .career-banner-section {
@@ -203,6 +240,29 @@
         .apply-btn {
             align-self: flex-start;
         }
+        
+        /* No Careers Mobile */
+        .no-careers-container {
+            min-height: 300px;
+            padding: 2rem 1rem;
+        }
+        
+        .no-careers-content {
+            padding: 2rem 1.5rem;
+        }
+        
+        .no-careers-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .no-careers-title {
+            font-size: 1.5rem;
+        }
+        
+        .no-careers-description {
+            font-size: 0.95rem;
+        }
     }
     
     @media (max-width: 480px) {
@@ -241,6 +301,19 @@
         <div class="join-team-container">
             <h1 class="join-team-title">{{ \App\Models\PageContent::getContent('career', 'join_team', 'title', 'Join Our Team') }}</h1>
             
+            @if($careerPositions->isEmpty())
+                <div class="no-careers-container">
+                    <div class="no-careers-content">
+                        <div class="no-careers-icon">
+                            💼
+                        </div>
+                        <h3 class="no-careers-title">No Open Positions</h3>
+                        <p class="no-careers-description">
+                            We don't have any open positions at the moment, but we're always looking for talented individuals to join our team. Please check back later for new opportunities.
+                        </p>
+                    </div>
+                </div>
+            @else
             <div class="career-boxes-container">
                 @foreach($careerPositions as $position)
                 <div class="career-box">
@@ -259,6 +332,7 @@
                 </div>
                 @endforeach
             </div>
+            @endif
         </div>
     </section>
     
@@ -295,9 +369,9 @@
             
             <div class="faq-container">
                 <div class="faq-column">
-                    <div class="faq-item active">
+                    <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span class="faq-icon">×</span>
+                            <span class="faq-icon">+</span>
                             <span>How can I book a ride with Tawasul Limo?</span>
                         </div>
                         <div class="faq-answer">
@@ -399,21 +473,5 @@ function applyNow() {
     // Here you can add functionality to redirect to business application form
 }
 
-function toggleFAQ(element) {
-    const faqItem = element.parentElement;
-    const isActive = faqItem.classList.contains('active');
-    
-    // Close all FAQ items
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-        item.querySelector('.faq-icon').textContent = '+';
-    });
-    
-    // If this item wasn't active, open it
-    if (!isActive) {
-        faqItem.classList.add('active');
-        element.querySelector('.faq-icon').textContent = '×';
-    }
-}
 </script>
 @endpush
