@@ -11,7 +11,7 @@ class BookingController extends Controller
 {
     public function index()
     {
-        $bookings = Booking::with('user')->paginate(15);
+        $bookings = Booking::with('user')->latest()->paginate(15);
         return view('admin.bookings.index', compact('bookings'));
     }
 

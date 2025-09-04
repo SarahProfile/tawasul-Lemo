@@ -4,7 +4,7 @@
                 <div class="hero-content">
                     <h1 class="hero-title">{{ \App\Models\PageContent::getContent('home', 'hero', 'title', 'Book. Ride. Arrive in Luxury.') }}</h1>
                     
-                    <form id="bookingForm" class="booking-form">
+                    <form id="bookingForm" class="booking-form" data-booking-url="{{ route('booking.store') }}">
                         @csrf
                         <div class="form-row">
                             <div class="form-group">
@@ -200,9 +200,9 @@
                 
                 <div class="faq-container">
                     <div class="faq-column">
-                        <div class="faq-item active">
+                        <div class="faq-item">
                             <div class="faq-question" onclick="toggleFAQ(this)">
-                                <span class="faq-icon">×</span>
+                                <span class="faq-icon">+</span>
                                 <span>How can I book a ride with Tawasul Limo?</span>
                             </div>
                             <div class="faq-answer">

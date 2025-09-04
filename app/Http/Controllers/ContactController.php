@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactNotification;
 
 class ContactController extends Controller
 {
@@ -17,12 +19,20 @@ class ContactController extends Controller
         ]);
 
         try {
-            Contact::create([
+            $contact = Contact::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'phone' => $request->phone,
                 'message' => $request->message
             ]);
+
+            // Send email notification
+            try {
+                Mail::to('booking@tawasullimo.ae')->send(new ContactNotification($contact));
+            } catch (\Exception $e) {
+                // Log the error but don't fail the contact form
+                \Log::error('Failed to send contact notification email: ' . $e->getMessage());
+            }
 
             return response()->json([
                 'success' => true,

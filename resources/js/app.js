@@ -123,9 +123,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add CSRF token
             formData.append('_token', csrfToken.getAttribute('content'));
             
-            // Get base URL for the request
-            const baseUrl = window.location.origin;
-            const bookingUrl = baseUrl + '/booking';
+            // Get booking URL - check for data attribute first, then use subdirectory
+            const form = document.getElementById('bookingForm');
+            const bookingUrl = form && form.dataset.bookingUrl 
+                ? form.dataset.bookingUrl 
+                : window.location.origin + '/tawasullimo/booking';
             
             console.log('Attempting to submit booking to:', bookingUrl);
             console.log('Form data:', Object.fromEntries(formData.entries()));
@@ -333,8 +335,8 @@ function populateDateDropdown() {
     }
 }
 
-// Initialize Google Maps (with fallback)
-window.initMap = function() {
+// Initialize Google Maps (with fallback) - Make it globally available
+function initMap() {
     console.log('initMap called');
     try {
         const mapElement = document.getElementById('map');
@@ -1015,9 +1017,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add CSRF token
             formData.append('_token', csrfToken.getAttribute('content'));
             
-            // Get base URL for the request
-            const baseUrl = window.location.origin;
-            const bookingUrl = baseUrl + '/booking';
+            // Get booking URL - check for data attribute first, then use subdirectory
+            const form = document.getElementById('bookingForm');
+            const bookingUrl = form && form.dataset.bookingUrl 
+                ? form.dataset.bookingUrl 
+                : window.location.origin + '/tawasullimo/booking';
             
             console.log('Attempting to submit booking to:', bookingUrl);
             console.log('Form data:', Object.fromEntries(formData.entries()));
@@ -1178,6 +1182,8 @@ function confirmLocation() {
 // Make functions globally available
 window.toggleMobileMenu = toggleMobileMenu;
 window.closeMobileMenu = closeMobileMenu;
+// Make functions globally available for HTML onclick handlers
+window.initMap = initMap;
 window.openBookingModal = openBookingModal;
 window.closeBookingModal = closeBookingModal;
 window.handleLocationInput = handleLocationInput;

@@ -104,12 +104,12 @@
 
             <div class="detail-row">
                 <span class="label">Date:</span>
-                <span class="value">{{ $booking->date->format('d/m/Y') }}</span>
+                <span class="value">{{ $booking->date ? $booking->date->format('d/m/Y') : 'N/A' }}</span>
             </div>
 
             <div class="detail-row">
                 <span class="label">Time:</span>
-                <span class="value">{{ $booking->time->format('H:i') }}</span>
+                <span class="value">{{ $booking->time ? $booking->time->format('H:i') : 'N/A' }}</span>
             </div>
 
             <div class="detail-row">
@@ -124,7 +124,7 @@
 
             <div class="detail-row">
                 <span class="label">Submitted:</span>
-                <span class="value">{{ $booking->created_at->format('d/m/Y H:i') }}</span>
+                <span class="value">{{ $booking->created_at ? $booking->created_at->format('d/m/Y H:i') : 'N/A' }}</span>
             </div>
         </div>
 

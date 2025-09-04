@@ -4,16 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="booking-url" content="{{ route('booking.store') }}">
     <title>@yield('title', 'Tawasul Limousine')</title>
     
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ time() }}">
     
     @stack('styles')
     @yield('head')
-    
-    <!-- Google Maps API -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbxuyBHu5VWQGbiZDlpJ1p2qhC7C8pF0g&libraries=places&callback=initMap"></script>
 </head>
 <body>
     @include('layouts.header')
@@ -115,7 +113,10 @@
     @include('layouts.footer')
     
     <!-- Main JavaScript -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    @vite(['resources/js/app.js'])
+    
+    <!-- Google Maps API - Load after main JS -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY', 'AIzaSyDbxuyBHu5VWQGbiZDlpJ1p2qhC7C8pF0g') }}&libraries=places&callback=initMap"></script>
     
     @stack('scripts')
     @yield('scripts')

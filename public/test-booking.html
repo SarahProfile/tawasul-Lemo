@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Test</title>
+    <meta name="csrf-token" content="test-token">
+</head>
+<body>
+    <h1>Booking Endpoint Test</h1>
+    <button onclick="testBookingEndpoint()">Test Booking Endpoint</button>
+    <div id="results"></div>
+
+    <script>
+        async function testBookingEndpoint() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<p>Testing...</p>';
+            
+            const baseUrl = window.location.origin;
+            const tests = [
+                { name: 'Test Endpoint Check', url: baseUrl + '/test-booking', method: 'GET' },
+                { name: 'Booking Endpoint Options', url: baseUrl + '/booking', method: 'OPTIONS' },
+                { name: 'Booking Endpoint POST Test', url: baseUrl + '/booking', method: 'POST' }
+            ];
+            
+            let testResults = '<h2>Test Results:</h2>';
+            
+            for (const test of tests) {
+                try {
+                    console.log(`Testing ${test.name}: ${test.method} ${test.url}`);
+                    
+                    let options = {
+                        method: test.method,
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        }
+                    };
+                    
+                    if (test.method === 'POST') {
+                        options.body = JSON.stringify({
+                            city: 'Dubai',
+                            date: '2025-01-15',
+                            time: '10:00',
+                            pickup_location: 'Dubai Mall',
+                            dropoff_location: 'Dubai Airport',
+                            mobile: '+971501234567',
+                            email: 'test@example.com',
+                            _token: 'test-token'
+                        });
+                    }
+                    
+                    const response = await fetch(test.url, options);
+                    const data = await response.text();
+                    
+                    testResults += `<div style="margin: 10px 0; padding: 10px; border: 1px solid #ccc;">
+                        <strong>${test.name}</strong><br>
+                        Status: ${response.status} ${response.statusText}<br>
+                        Response: <pre>${data}</pre>
+                    </div>`;
+                    
+                } catch (error) {
+                    testResults += `<div style="margin: 10px 0; padding: 10px; border: 1px solid red;">
+                        <strong>${test.name}</strong><br>
+                        Error: ${error.message}<br>
+                    </div>`;
+                }
+            }
+            
+            results.innerHTML = testResults;
+        }
+    </script>
+</body>
+</html>

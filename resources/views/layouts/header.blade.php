@@ -14,7 +14,7 @@
                 </ul>
             </nav>
             <div class="header-buttons">
-                <button onclick="openBookingModal()" class="header-btn primary">Book Your Trip</button>
+                <a href="{{ route('booking.create') }}" class="header-btn primary">Book Your Trip</a>
                 @auth
                     <span class="header-btn user-greeting">Hello, {{ Auth::user()->name }}</span>
                     <form action="{{ route('logout') }}" method="POST" style="display: inline;">
@@ -41,7 +41,7 @@
                 <li><a href="{{ route('contact') }}" class="{{ Request::routeIs('contact') ? 'active' : '' }}" onclick="closeMobileMenu()">Contact Us</a></li>
             </ul>
             <div class="mobile-menu-buttons">
-                <button onclick="openBookingModal(); closeMobileMenu();" class="header-btn primary" style="margin-bottom: 10px;">Book Your Trip</button>
+                <a href="{{ route('booking.create') }}" class="header-btn primary" style="margin-bottom: 10px;" onclick="closeMobileMenu();">Book Your Trip</a>
                 @auth
                     <span class="header-btn user-greeting">Hello, {{ Auth::user()->name }}</span>
                     <form action="{{ route('logout') }}" method="POST" style="margin-top: 10px;">

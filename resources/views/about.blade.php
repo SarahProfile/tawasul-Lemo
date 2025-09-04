@@ -81,51 +81,6 @@
         margin: 0;
     }
     
-    /* Looping Text Bar */
-    .looping-text-bar {
-        background: #000000;
-        color: white;
-        padding: 1rem 0;
-        overflow: hidden;
-        white-space: nowrap;
-        position: relative;
-        width: 100%;
-        margin-top: 0;
-        z-index: 3;
-    }
-    
-    .looping-text-content {
-        display: inline-flex;
-        align-items: center;
-        animation: scroll-text 15s linear infinite;
-        font-size: 1.4rem;
-        font-weight: 400;
-        white-space: nowrap;
-        width: calc(200%);
-    }
-    
-    .looping-text-content span {
-        display: inline-flex;
-        align-items: center;
-        margin-right: 1rem;
-        margin-left: 1rem;
-    }
-    
-    .looping-icon {
-        height: 18px;
-        width: auto;
-        margin: 0 1rem;
-        filter: brightness(0) invert(1);
-    }
-    
-    @keyframes scroll-text {
-        0% {
-            transform: translateX(0%);
-        }
-        100% {
-            transform: translateX(-50%);
-        }
-    }
     
     /* Responsive Content Display */
     .desktop-content {
@@ -769,27 +724,6 @@
         </div>
     </section>
     
-    <!-- Looping Text Bar -->
-    <section class="looping-text-bar">
-        <div class="looping-text-content">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-            <span>Your Journey, Our Privilege</span>
-            <img src="{{ asset('assets/car-icon.png') }}" alt="Car Icon" class="looping-icon">
-        </div>
-    </section>
     
     <!-- Section Two: Vision -->
     <section class="vision-section">
@@ -854,9 +788,9 @@
             
             <div class="faq-container">
                 <div class="faq-column">
-                    <div class="faq-item active">
+                    <div class="faq-item">
                         <div class="faq-question" onclick="toggleFAQ(this)">
-                            <span class="faq-icon">×</span>
+                            <span class="faq-icon">+</span>
                             <span>How can I book a ride with Tawasul Limo?</span>
                         </div>
                         <div class="faq-answer">

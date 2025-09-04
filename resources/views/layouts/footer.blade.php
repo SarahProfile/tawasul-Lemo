@@ -41,10 +41,10 @@
                 </div>
                 
                 <nav class="footer-bottom-menu">
-                    <a href="https://www.instagram.com/tawasullimo/" target="_blank">Instagram</a>
+                    <a href="https://www.instagram.com/tawasulLimo/" target="_blank">Instagram</a>
                     <a href="https://www.facebook.com/profile.php?id=61569536035140" target="_blank">Facebook</a>
-                    <a href="#linkedin">LinkedIn</a>
-                    <a href="#youtube">YouTube</a>
+                    <a href="https://twitter.com/tawasulLimo" target="_blank">Twitter</a>
+                    <a href="https://www.youtube.com/@tawasulLimo" target="_blank">YouTube</a>
                 </nav>
             </div>
         </div>
